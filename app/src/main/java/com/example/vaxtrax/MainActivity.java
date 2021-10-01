@@ -19,12 +19,12 @@ public class MainActivity extends AppCompatActivity {
         switch(v.getId()) {
             case R.id.button_enterInfo:
                 Log.d("DEBUGGING", "button_enterInfo pressed");
-//                Intent intent = new Intent(this, MainMenu.class);
+                Intent intent = new Intent(this, MainScreen.class);
                 EditText editTextFirstName = (EditText) findViewById(R.id.editText_firstName);
                 EditText editTextLastName = (EditText) findViewById(R.id.editText_lastName);
-                UserInfo.setFirstName(editTextFirstName.getText().toString());
-                UserInfo.setLastName(editTextLastName.getText().toString());
-//                startActivity(intent);
+                UserInfo.getInstance().setFirstName(editTextFirstName.getText().toString());
+                UserInfo.getInstance().setLastName(editTextLastName.getText().toString());
+                startActivity(intent);
                 break;
         }
     }

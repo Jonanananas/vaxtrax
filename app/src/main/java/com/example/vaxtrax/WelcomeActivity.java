@@ -23,8 +23,8 @@ public class WelcomeActivity extends AppCompatActivity {
         prefEditor = prefs.edit();
 
 //        Clear userinfo for testing purposes:
-        prefEditor.clear();
-        prefEditor.commit();
+//        prefEditor.clear();
+//        prefEditor.commit();
     }
     public void onButtonClicked(View v) {
 //        Change and save user data to SharedPreferences when enter button is pressed
@@ -33,9 +33,11 @@ public class WelcomeActivity extends AppCompatActivity {
                 Log.d("DEBUGGING", "button_enterInfo pressed");
                 EditText editTextFirstName = (EditText) findViewById(R.id.editText_firstName);
                 EditText editTextLastName = (EditText) findViewById(R.id.editText_lastName);
+                EditText editTextDay = (EditText) findViewById(R.id.editTextNumber_day);
 
                 prefEditor.putString("userFirstName", editTextFirstName.getText().toString());
                 prefEditor.putString("userLastName", editTextLastName.getText().toString());
+                prefEditor.putInt("userDayOfBirth", Integer.parseInt(editTextDay.getText().toString()));
 
                 prefEditor.commit();
                 openMainActivity();

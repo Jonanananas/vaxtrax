@@ -28,16 +28,17 @@ public class MainActivity extends AppCompatActivity {
 
         String userFirstName = prefs.getString("userFirstName", "");
         String userLastName = prefs.getString("userLastName", "");
+        int userDayOfBirth = prefs.getInt("userDayOfBirth", 0);
 
 //      Open the user welcome screen if user info has not been defined.
-        if (userFirstName == "" && userLastName == "") {
+        if (userFirstName.equals("")  && userLastName.equals("")) {
             openWelcomeActivity();
         } else {
             setContentView(R.layout.activity_main);
 
             textViewUserGreeting = findViewById(R.id.textView_userGreeting);
             textViewUserGreeting.setText(
-                    getString(R.string.main_menu_greeting_text, userFirstName, UserInfo.getInstance().getAge())
+                    getString(R.string.main_menu_greeting_text, userFirstName, userDayOfBirth)
             );
         }
     }
@@ -55,5 +56,16 @@ public class MainActivity extends AppCompatActivity {
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+    public void onButtonClicked(View v) {
+//        Change and save user data to SharedPreferences when enter button is pressed
+        switch(v.getId()) {
+            case R.id.button_debug_clear_sharedprefs:
+                prefEditor.clear();
+                prefEditor.commit();
+                openWelcomeActivity();
+                prefEditor.commit();
+                break;
+        }
     }
 }

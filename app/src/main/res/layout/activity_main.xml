@@ -20,4 +20,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022" />
 
+    <Button
+        android:id="@+id/button_debug_clear_sharedprefs"
+        android:layout_width="349dp"
+        android:layout_height="62dp"
+        android:onClick="onButtonClicked"
+        android:text="button_debug_clear_sharedprefs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_userGreeting"
+        app:layout_constraintVertical_bias="0.935" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

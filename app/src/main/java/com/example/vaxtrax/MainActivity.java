@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         if (userFirstName == "" && userLastName == "") {
             openWelcomeActivity();
         } else {
-            setContentView(R.layout.activity_main_screen);
+            setContentView(R.layout.activity_main);
 
             textViewUserGreeting = findViewById(R.id.textView_userGreeting);
             textViewUserGreeting.setText(

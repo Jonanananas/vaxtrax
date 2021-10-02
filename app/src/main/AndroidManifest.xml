@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VaxTrax">
         <activity
-            android:name=".MainMenu"
+            android:name=".WelcomeActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

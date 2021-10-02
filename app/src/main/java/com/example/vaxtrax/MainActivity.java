@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    TextView textViewUserGreeting;
     SharedPreferences.Editor prefEditor;
     SharedPreferences prefs;
 
@@ -24,33 +26,34 @@ public class MainActivity extends AppCompatActivity {
 //        prefEditor.clear();
 //        prefEditor.commit();
 
-        String userFirstName =  prefs.getString("userFirstName", "");
-        String userLastName =  prefs.getString("userLastName", "");
+        String userFirstName = prefs.getString("userFirstName", "");
+        String userLastName = prefs.getString("userLastName", "");
 
-//      Open the main menu screen if user data has already been defined.
-        if(userFirstName != "" && userLastName != ""){
-            openMainMenu();
-        }else
-            setContentView(R.layout.activity_set_user_info);
-    }
-    public void onButtonClicked(View v) {
-//        Change and save user data to SharedPreferences when enter button is pressed
-        switch(v.getId()) {
-            case R.id.button_enterInfo:
-                Log.d("DEBUGGING", "button_enterInfo pressed");
-                EditText editTextFirstName = (EditText) findViewById(R.id.editText_firstName);
-                EditText editTextLastName = (EditText) findViewById(R.id.editText_lastName);
+//      Open the user welcome screen if user info has not been defined.
+        if (userFirstName == "" && userLastName == "") {
+            openWelcomeActivity();
+        } else {
+            setContentView(R.layout.activity_main_screen);
 
-                prefEditor.putString("userFirstName", editTextFirstName.getText().toString());
-                prefEditor.putString("userLastName", editTextLastName.getText().toString());
-
-                prefEditor.commit();
-                openMainMenu();
-                break;
+            textViewUserGreeting = findViewById(R.id.textView_userGreeting);
+            textViewUserGreeting.setText(
+                    getString(R.string.main_menu_greeting_text, userFirstName, UserInfo.getInstance().getAge())
+            );
         }
     }
-    public void openMainMenu(){
-        Intent intent = new Intent(this, MainMenu.class);
+
+    public void openWelcomeActivity(){
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+    }
+
+//    Go to phone's home screen when back button is pressed
+//    Credit: https://stackoverflow.com/questions/3724509/going-to-home-screen-programmatically
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 }

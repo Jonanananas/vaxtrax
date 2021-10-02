@@ -22,9 +22,9 @@ public class MainMenu extends AppCompatActivity {
         String userLastName =  prefs.getString("userLastName", "");
 
 //        Clear userinfo for testing purposes:
-//        prefEditor = prefs.edit();
-//        prefEditor.clear();
-//        prefEditor.commit();
+        prefEditor = prefs.edit();
+        prefEditor.clear();
+        prefEditor.commit();
 
         textViewUserGreeting = findViewById(R.id.textView_userGreeting);
         textViewUserGreeting.setText(

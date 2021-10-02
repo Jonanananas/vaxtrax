@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         if(userFirstName != "" && userLastName != ""){
             openMainMenu();
         }else
-            setContentView(R.layout.set_user_info);
+            setContentView(R.layout.activity_set_user_info);
     }
     public void onButtonClicked(View v) {
 //        Change and save user data to SharedPreferences when enter button is pressed

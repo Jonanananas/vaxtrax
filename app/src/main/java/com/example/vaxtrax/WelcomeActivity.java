@@ -44,6 +44,15 @@ public class WelcomeActivity extends AppCompatActivity {
                 break;
         }
     }
+//    Go to phone's home screen when back button is pressed
+//    Credit: https://stackoverflow.com/questions/3724509/going-to-home-screen-programmatically
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
     public void openMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

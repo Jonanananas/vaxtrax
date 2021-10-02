@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class MainMenu extends AppCompatActivity {
     TextView textViewUserGreeting;
     SharedPreferences prefs;
+    SharedPreferences.Editor prefEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +21,15 @@ public class MainMenu extends AppCompatActivity {
         String userFirstName =  prefs.getString("userFirstName", "");
         String userLastName =  prefs.getString("userLastName", "");
 
+//        Clear userinfo for testing purposes:
+//        prefEditor = prefs.edit();
+//        prefEditor.clear();
+//        prefEditor.commit();
+
         textViewUserGreeting = findViewById(R.id.textView_userGreeting);
-        textViewUserGreeting.setText("Hi " +  userFirstName + " " +
-                userLastName + ", you are a " + UserInfo.getInstance().getAge() + "-year-old.");
+        textViewUserGreeting.setText(
+            getString(R.string.main_menu_greeting_text, userFirstName, UserInfo.getInstance().getAge())
+        );
     }
 
 //    Go to phone's home screen when back button is pressed

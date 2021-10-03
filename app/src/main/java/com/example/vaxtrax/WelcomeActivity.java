@@ -8,7 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+
+import java.util.Calendar;
 
 public class WelcomeActivity extends AppCompatActivity {
     private SharedPreferences prefs;
@@ -34,17 +35,27 @@ public class WelcomeActivity extends AppCompatActivity {
                 EditText editTextFirstName = (EditText) findViewById(R.id.editText_firstName);
                 EditText editTextLastName = (EditText) findViewById(R.id.editText_lastName);
                 EditText editTextDay = (EditText) findViewById(R.id.editTextNumber_day);
+                EditText editTextMonth = (EditText) findViewById(R.id.editTextNumber_month);
+                EditText editTextYear = (EditText) findViewById(R.id.editTextNumber_year);
+
+                int userBirthDay = Integer.parseInt(editTextDay.getText().toString());
+                int userBirthMonth = Integer.parseInt(editTextMonth.getText().toString());
+                int userBirthYear = Integer.parseInt(editTextYear.getText().toString());
+                int userAge = calculateAge(userBirthDay, userBirthMonth, userBirthYear);
 
                 prefEditor.putString("userFirstName", editTextFirstName.getText().toString());
                 prefEditor.putString("userLastName", editTextLastName.getText().toString());
-                prefEditor.putInt("userDayOfBirth", Integer.parseInt(editTextDay.getText().toString()));
+                prefEditor.putInt("userBirthDay", userBirthDay);
+                prefEditor.putInt("userBirthMonth", userBirthMonth);
+                prefEditor.putInt("userBirthYear", userBirthYear);
+                prefEditor.putInt("userAge", userAge);
 
                 prefEditor.commit();
                 openMainActivity();
                 break;
         }
     }
-//    Go to phone's home screen when back button is pressed
+//    Go to phone's home screen when back button is pressed.
 //    Credit: https://stackoverflow.com/questions/3724509/going-to-home-screen-programmatically
     @Override
     public void onBackPressed() {
@@ -53,8 +64,24 @@ public class WelcomeActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
-    public void openMainActivity(){
+    public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+//    Calculate user age.
+    private int calculateAge(int day, int month, int year) {
+        Calendar today = Calendar.getInstance();
+        Calendar birthday = Calendar.getInstance();
+
+        birthday.set(year, month-1, day);
+        int age = today.get(Calendar.YEAR) - birthday.get(Calendar.YEAR);
+
+        if(today.get(Calendar.MONTH) < birthday.get(Calendar.MONTH)) {
+            age--;
+        }else if ((today.get(Calendar.MONTH) == birthday.get(Calendar.MONTH)) &&
+            today.get(Calendar.DAY_OF_MONTH) < birthday.get(Calendar.DAY_OF_MONTH)) {
+            age--;
+        }
+        return age;
     }
 }

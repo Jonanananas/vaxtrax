@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         String userFirstName = prefs.getString("userFirstName", "");
         String userLastName = prefs.getString("userLastName", "");
-        int userDayOfBirth = prefs.getInt("userDayOfBirth", 0);
+        int userAge = prefs.getInt("userAge", 0);
 
 //      Open the user welcome screen if user info has not been defined.
         if (userFirstName.equals("")  && userLastName.equals("")) {
@@ -37,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
 
             textViewUserGreeting = findViewById(R.id.textView_userGreeting);
             textViewUserGreeting.setText(
-                    getString(R.string.main_menu_greeting_text, userFirstName, userDayOfBirth)
+                    getString(R.string.main_menu_greeting_text, userFirstName, userAge)
             );
         }
     }
 
-    public void openWelcomeActivity(){
+    public void openWelcomeActivity() {
         Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
     }

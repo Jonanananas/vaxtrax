@@ -11,8 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class WelcomeActivity extends AppCompatActivity {
-    SharedPreferences prefs;
-    SharedPreferences.Editor prefEditor;
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor prefEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

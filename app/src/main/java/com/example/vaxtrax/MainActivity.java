@@ -10,9 +10,9 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    TextView textViewUserGreeting;
-    SharedPreferences.Editor prefEditor;
-    SharedPreferences prefs;
+    private TextView textViewUserGreeting;
+    private SharedPreferences.Editor prefEditor;
+    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -15,4 +15,5 @@
     <color name="grey_150">#D9D9D9</color>
     <color name="grey_100">#F3F3F3</color>
     <color name="pink_200">#F6B7FF</color>
+    <color name="error_red">#FFFF2B2B</color>
 </resources>

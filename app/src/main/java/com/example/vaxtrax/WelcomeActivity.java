@@ -8,20 +8,35 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
 public class WelcomeActivity extends AppCompatActivity {
     private SharedPreferences prefs;
     private SharedPreferences.Editor prefEditor;
+    private TextView errorText;
+    private EditText editTextFirstName;
+    private EditText editTextLastName;
+    private EditText editTextDay;
+    private EditText editTextMonth;
+    private EditText editTextYear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_new_user);
 
+        errorText = findViewById(R.id.textView_errorMessage);
+
         prefs = getSharedPreferences("com.example.vaxtrax", MODE_PRIVATE);
         prefEditor = prefs.edit();
+
+        editTextFirstName = (EditText) findViewById(R.id.editText_firstName);
+        editTextLastName = (EditText) findViewById(R.id.editText_lastName);
+        editTextDay = (EditText) findViewById(R.id.editTextNumber_day);
+        editTextMonth = (EditText) findViewById(R.id.editTextNumber_month);
+        editTextYear = (EditText) findViewById(R.id.editTextNumber_year);
 
 //        Clear userinfo for testing purposes:
 //        prefEditor.clear();
@@ -32,30 +47,55 @@ public class WelcomeActivity extends AppCompatActivity {
         switch(v.getId()) {
             case R.id.button_enterInfo:
                 Log.d("DEBUGGING", "button_enterInfo pressed");
-                EditText editTextFirstName = (EditText) findViewById(R.id.editText_firstName);
-                EditText editTextLastName = (EditText) findViewById(R.id.editText_lastName);
-                EditText editTextDay = (EditText) findViewById(R.id.editTextNumber_day);
-                EditText editTextMonth = (EditText) findViewById(R.id.editTextNumber_month);
-                EditText editTextYear = (EditText) findViewById(R.id.editTextNumber_year);
 
-                int userBirthDay = Integer.parseInt(editTextDay.getText().toString());
-                int userBirthMonth = Integer.parseInt(editTextMonth.getText().toString());
-                int userBirthYear = Integer.parseInt(editTextYear.getText().toString());
-                int userAge = calculateAge(userBirthDay, userBirthMonth, userBirthYear);
+                String firstName = "";
+                String lastName = "";
+                firstName = editTextFirstName.getText().toString();
+                lastName = editTextLastName.getText().toString();
+
+                int userBirthDay = -1;
+                int userBirthMonth = -1;
+                int userBirthYear = -1;
+                int userAge = -1;
+
+                if(!editTextDay.getText().toString().equals("")) {
+                    if (Integer.parseInt(editTextDay.getText().toString()) > 0)
+                        userBirthDay = Integer.parseInt(editTextDay.getText().toString());
+                }
+                if(!editTextMonth.getText().toString().equals("")) {
+                    if (Integer.parseInt(editTextMonth.getText().toString()) > 0)
+                        userBirthMonth = Integer.parseInt(editTextMonth.getText().toString());
+                }
+                if(!editTextYear.getText().toString().equals("")) {
+                    if (Integer.parseInt(editTextYear.getText().toString()) > 0)
+                        userBirthYear = Integer.parseInt(editTextYear.getText().toString());
+                }
+
+                userAge = calculateAge(userBirthDay, userBirthMonth, userBirthYear);
 
                 //TODO: Give an error, and don't let the user continue
                 // to the next screen or save the user's input data if userAge is less than 0
                 // or the user's input is otherwise improper.
 
-                prefEditor.putString("userFirstName", editTextFirstName.getText().toString());
-                prefEditor.putString("userLastName", editTextLastName.getText().toString());
-                prefEditor.putInt("userBirthDay", userBirthDay);
-                prefEditor.putInt("userBirthMonth", userBirthMonth);
-                prefEditor.putInt("userBirthYear", userBirthYear);
-                prefEditor.putInt("userAge", userAge);
+                if(lastName.equals("") || firstName.equals("") && (userAge < 0 || userBirthDay
+                    < 0 || userBirthMonth < 0 || userBirthYear < 0)) {
+                Log.d("DEBUGGING", "got there");
+                errorText.setText("Virheellinen syöte. Tarkista, että olet täyttänyt kaikki kentät!");
+                errorText.setVisibility(View.VISIBLE);
+                }else if(userAge < 0 || userBirthDay < 0 || userBirthMonth < 0 || userBirthYear < 0) {
+                    errorText.setText("Virheellinen syöte. Tarkista syntymäaika!");
+                    errorText.setVisibility(View.VISIBLE);
+                }else {
+                    prefEditor.putString("userFirstName", firstName);
+                    prefEditor.putString("userLastName", lastName);
+                    prefEditor.putInt("userBirthDay", userBirthDay);
+                    prefEditor.putInt("userBirthMonth", userBirthMonth);
+                    prefEditor.putInt("userBirthYear", userBirthYear);
+                    prefEditor.putInt("userAge", userAge);
 
-                prefEditor.commit();
-                openMainActivity();
+                    prefEditor.commit();
+                    openMainActivity();
+                }
                 break;
         }
     }

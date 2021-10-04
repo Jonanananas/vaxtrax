@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">VaxTrax</string>
-    <string name="main_menu_greeting_text">Hi %1$s! You are a %2$d-year-old.</string>
+    <string name="main_menu_greeting_text">Hei %1$s! Olet %2$d-vuotias.</string>
 </resources>

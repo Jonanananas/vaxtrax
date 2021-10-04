@@ -116,15 +116,23 @@ public class WelcomeActivity extends AppCompatActivity {
     private int calculateAge(int day, int month, int year) {
         Calendar today = Calendar.getInstance();
         Calendar birthday = Calendar.getInstance();
+        int age = -1;
+//        Check for proper date input
+        if((month > 0 && month <= 12) && day > 0 && year > 1800 ) {
+            birthday.set(year, month - 1, day);
 
-        birthday.set(year, month-1, day);
-        int age = today.get(Calendar.YEAR) - birthday.get(Calendar.YEAR);
+//            Get the last day of the month
+            if (birthday.getActualMaximum(Calendar.DATE) <= day) {
+//                Set the user age if the given date exists
+                age = today.get(Calendar.YEAR) - birthday.get(Calendar.YEAR);
 
-        if(today.get(Calendar.MONTH) < birthday.get(Calendar.MONTH)) {
-            age--;
-        }else if ((today.get(Calendar.MONTH) == birthday.get(Calendar.MONTH)) &&
-            today.get(Calendar.DAY_OF_MONTH) < birthday.get(Calendar.DAY_OF_MONTH)) {
-            age--;
+                if (today.get(Calendar.MONTH) < birthday.get(Calendar.MONTH)) {
+                    age--;
+                } else if ((today.get(Calendar.MONTH) == birthday.get(Calendar.MONTH)) &&
+                        today.get(Calendar.DAY_OF_MONTH) < birthday.get(Calendar.DAY_OF_MONTH)) {
+                    age--;
+                }
+            }
         }
         return age;
     }

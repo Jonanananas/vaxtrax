@@ -43,6 +43,10 @@ public class WelcomeActivity extends AppCompatActivity {
                 int userBirthYear = Integer.parseInt(editTextYear.getText().toString());
                 int userAge = calculateAge(userBirthDay, userBirthMonth, userBirthYear);
 
+                //TODO: Give an error, and don't let the user continue
+                // to the next screen or save the user's input data if userAge is less than 0
+                // or the user's input is otherwise improper.
+
                 prefEditor.putString("userFirstName", editTextFirstName.getText().toString());
                 prefEditor.putString("userLastName", editTextLastName.getText().toString());
                 prefEditor.putInt("userBirthDay", userBirthDay);

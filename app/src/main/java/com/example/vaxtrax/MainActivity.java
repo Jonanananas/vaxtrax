@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        prefs = getSharedPreferences("UserData", MODE_PRIVATE);
+        prefs = getSharedPreferences("com.example.vaxtrax", MODE_PRIVATE);
         prefEditor = prefs.edit();
 
 //        Clear userinfo for testing purposes:

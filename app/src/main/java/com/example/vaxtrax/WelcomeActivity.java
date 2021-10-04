@@ -20,7 +20,7 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_new_user);
 
-        prefs = getSharedPreferences("UserData", MODE_PRIVATE);
+        prefs = getSharedPreferences("com.example.vaxtrax", MODE_PRIVATE);
         prefEditor = prefs.edit();
 
 //        Clear userinfo for testing purposes:

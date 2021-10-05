@@ -123,6 +123,7 @@ public class WelcomeActivity extends AppCompatActivity {
 //            Initialize the birthday calendar with the user's input and the first day of the month
 //            because if the user's input day goes over the month's last day the calendar will
 //            change the month to the next month or some month after that.
+//            Subtract 1 from the month variable because January = 0;
             birthday.set(year, month - 1, 1);
 
 //            Get the last day of the month and check if the user input day is possible within that month

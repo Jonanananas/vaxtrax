@@ -1,5 +1,6 @@
 package com.example.vaxtrax;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -23,17 +25,13 @@ public class MainActivity extends AppCompatActivity {
         prefs = getSharedPreferences("com.example.vaxtrax", MODE_PRIVATE);
         prefEditor = prefs.edit();
 
-//        Clear userinfo for testing purposes:
-//        prefEditor.clear();
-//        prefEditor.commit();
-
         String userFirstName = prefs.getString("userFirstName", "");
         String userLastName = prefs.getString("userLastName", "");
         int userAge = prefs.getInt("userAge", 0);
 
 //      Open the user welcome screen if user info has not been defined.
         if (userFirstName.equals("")  && userLastName.equals("")) {
-            openWelcomeActivity();
+            openActivity(WelcomeActivity.class);
         } else {
             setContentView(R.layout.activity_main);
 
@@ -51,11 +49,18 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void openWelcomeActivity() {
-        Intent intent = new Intent(this, WelcomeActivity.class);
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        clearSharedPreferences();
+        openActivity(WelcomeActivity.class);
+        return super.onOptionsItemSelected(item);
+    }
+//    Use this to open an activity by passing the desired activity's name
+//    (e.g. "ActivityName.class") to the function as an argument.
+    public void openActivity(Class activityClass) {
+        Intent intent = new Intent(this, activityClass);
         startActivity(intent);
     }
-
 //    Go to phone's home screen when back button is pressed
 //    Credit: https://stackoverflow.com/questions/3724509/going-to-home-screen-programmatically
     @Override
@@ -65,15 +70,18 @@ public class MainActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+//    Link this function to buttons and add here what the buttons do.
     public void onButtonClicked(View v) {
 //        Change and save user data to SharedPreferences when enter button is pressed
         switch(v.getId()) {
             case R.id.button_debug_clear_sharedprefs:
-                prefEditor.clear();
-                prefEditor.commit();
-                openWelcomeActivity();
-                prefEditor.commit();
+                clearSharedPreferences();
+                openActivity(WelcomeActivity.class);
                 break;
         }
+    }
+    public void clearSharedPreferences(){
+        prefEditor.clear();
+        prefEditor.commit();
     }
 }

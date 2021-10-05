@@ -37,10 +37,6 @@ public class WelcomeActivity extends AppCompatActivity {
         editTextDay = (EditText) findViewById(R.id.editTextNumber_day);
         editTextMonth = (EditText) findViewById(R.id.editTextNumber_month);
         editTextYear = (EditText) findViewById(R.id.editTextNumber_year);
-
-//        Clear userinfo for testing purposes:
-//        prefEditor.clear();
-//        prefEditor.commit();
     }
     public void onButtonClicked(View v) {
 //        Change and save user data to SharedPreferences when enter button is pressed
@@ -73,15 +69,14 @@ public class WelcomeActivity extends AppCompatActivity {
 
                 userAge = calculateAge(userBirthDay, userBirthMonth, userBirthYear);
 
-                //TODO: Give an error, and don't let the user continue
+                // Give an error, and don't let the user continue
                 // to the next screen or save the user's input data if userAge is less than 0
                 // or the user's input is otherwise improper.
 
                 if(lastName.equals("") || firstName.equals("") && (userAge < 0 || userBirthDay
                     < 0 || userBirthMonth < 0 || userBirthYear < 0)) {
-                Log.d("DEBUGGING", "got there");
-                errorText.setText("Virheellinen syöte. Tarkista, että olet täyttänyt kaikki kentät!");
-                errorText.setVisibility(View.VISIBLE);
+                    errorText.setText("Virheellinen syöte. Tarkista, että olet täyttänyt kaikki kentät!");
+                    errorText.setVisibility(View.VISIBLE);
                 }else if(userAge < 0 || userBirthDay < 0 || userBirthMonth < 0 || userBirthYear < 0) {
                     errorText.setText("Virheellinen syöte. Tarkista syntymäaika!");
                     errorText.setVisibility(View.VISIBLE);

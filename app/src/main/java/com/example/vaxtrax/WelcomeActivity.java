@@ -117,15 +117,23 @@ public class WelcomeActivity extends AppCompatActivity {
         Calendar today = Calendar.getInstance();
         Calendar birthday = Calendar.getInstance();
         int age = -1;
+
 //        Check for proper date input
         if((month > 0 && month <= 12) && day > 0 && year > 1800 ) {
-            birthday.set(year, month - 1, day);
+//            Initialize the birthday calendar with the user's input and the first day of the month
+//            because if the user's input day goes over the month's last day the calendar will
+//            change the month to the next month or some month after that.
+            birthday.set(year, month - 1, 1);
 
-//            Get the last day of the month
-            if (birthday.getActualMaximum(Calendar.DATE) <= day) {
+//            Get the last day of the month and check if the user input day is possible within that month
+            if (birthday.getActualMaximum(Calendar.DATE) >= day) {
+//                Set the calendar day to be the user input day
+                birthday.set(Calendar.DAY_OF_MONTH, day);
+
 //                Set the user age if the given date exists
                 age = today.get(Calendar.YEAR) - birthday.get(Calendar.YEAR);
 
+//                Check if the user has had a birthday this year
                 if (today.get(Calendar.MONTH) < birthday.get(Calendar.MONTH)) {
                     age--;
                 } else if ((today.get(Calendar.MONTH) == birthday.get(Calendar.MONTH)) &&

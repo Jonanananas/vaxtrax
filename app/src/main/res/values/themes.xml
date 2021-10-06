@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.VaxTrax" parent="Theme.AppCompat">
+    <style name="Theme.VaxTrax" parent="Theme.AppCompat.Light">
 <!--        Use these to tweak colors if needed: -->
         <!-- Primary brand color. -->
 <!--        <item name="android:textColorPrimary">@color/grey_100</item>-->

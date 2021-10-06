@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        clearSharedPreferences();
         openActivity(WelcomeActivity.class);
         return super.onOptionsItemSelected(item);
     }

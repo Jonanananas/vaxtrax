@@ -16,6 +16,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private SharedPreferences prefs;
     private SharedPreferences.Editor prefEditor;
     private TextView errorText;
+    private TextView welcomeText;
     private EditText editTextFirstName;
     private EditText editTextLastName;
     private EditText editTextDay;
@@ -28,15 +29,32 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome_new_user);
 
         errorText = findViewById(R.id.textView_errorMessage);
+        welcomeText = findViewById(R.id.textView_welcome);
 
         prefs = getSharedPreferences("com.example.vaxtrax", MODE_PRIVATE);
         prefEditor = prefs.edit();
 
-        editTextFirstName = (EditText) findViewById(R.id.editText_firstName);
-        editTextLastName = (EditText) findViewById(R.id.editText_lastName);
-        editTextDay = (EditText) findViewById(R.id.editTextNumber_day);
-        editTextMonth = (EditText) findViewById(R.id.editTextNumber_month);
-        editTextYear = (EditText) findViewById(R.id.editTextNumber_year);
+        editTextFirstName = findViewById(R.id.editText_firstName);
+        editTextLastName = findViewById(R.id.editText_lastName);
+        editTextDay = findViewById(R.id.editTextNumber_day);
+        editTextMonth = findViewById(R.id.editTextNumber_month);
+        editTextYear = findViewById(R.id.editTextNumber_year);
+
+        String userFirstName = prefs.getString("userFirstName", "");
+        String userLastName = prefs.getString("userLastName", "");
+
+//      Change the texts in the activity if user data already exists in the SharedPreferences
+        if (!userFirstName.equals("") && !userLastName.equals("")) {
+            welcomeText.setText("Muuta käyttäjätietojasi:");
+
+            editTextFirstName.setText(userFirstName);
+            editTextLastName.setText(userLastName);
+            editTextDay.setText(Integer.toString(prefs.getInt("userBirthDay",0)));
+            editTextMonth.setText(Integer.toString(prefs.getInt("userBirthMonth",0)));
+            editTextYear.setText(Integer.toString(prefs.getInt("userBirthYear",0)));
+        } else {
+            welcomeText.setText("Tervetuloa käyttämään VaxTrax-sovellusta! \n Mikä on nimesi ja syntymäaikasi?");
+        }
     }
     public void onButtonClicked(View v) {
 //        Change and save user data to SharedPreferences when enter button is pressed

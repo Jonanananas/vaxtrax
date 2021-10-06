@@ -7,6 +7,34 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="20dp">
 
+    <TextView
+        android:id="@+id/textView_welcome"
+        android:layout_width="349dp"
+        android:layout_height="71dp"
+        android:gravity="bottom|center"
+        android:text="Tervetuloa käyttämään VaxTrax-sovellusta! \n Mikä on nimesi ja syntymäaikasi?"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editText_firstName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.68" />
+
+    <TextView
+        android:id="@+id/textView_errorMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Virheellinen syöte. Tarkista syntymäaika!"
+        android:textAlignment="center"
+        android:textColor="@color/error_red"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber_month"
+        app:layout_constraintVertical_bias="0.05" />
+
     <EditText
         android:id="@+id/editText_firstName"
         android:layout_width="wrap_content"
@@ -14,58 +42,14 @@
         android:ems="10"
         android:hint="Etunimi"
         android:inputType="textPersonName"
+        android:maxLength="34"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:maxLength="34"
-        app:layout_constraintVertical_bias="0.413" />
-
-    <EditText
-        android:id="@+id/editText_lastName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Sukunimi"
-        android:inputType="textPersonName"
-        android:nextFocusDown="@+id/editTextNumber_day"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_firstName"
-        android:maxLength="34"
-        app:layout_constraintVertical_bias="0.088" />
-
-    <TextView
-        android:id="@+id/textView_welcome"
-        android:layout_width="340dp"
-        android:layout_height="95dp"
-        android:text="Tervetuloa käyttämään VaxTrax-sovellusta! \n Mikä on nimesi ja syntymäaikasi?"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText_firstName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.863" />
-
-    <Button
-        android:id="@+id/button_enterInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onButtonClicked"
-        android:text="OK"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_errorMessage"
-        app:layout_constraintVertical_bias="0.642" />
+        app:layout_constraintVertical_bias="0.349" />
 
     <EditText
         android:id="@+id/editTextNumber_year"
@@ -73,30 +57,14 @@
         android:layout_height="45dp"
         android:ems="10"
         android:inputType="number"
+        android:maxLength="4"
+        android:nextFocusDown="@+id/button_enterInfo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.278"
         app:layout_constraintStart_toEndOf="@+id/editTextNumber_month"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.0"
-        android:nextFocusDown="@+id/button_enterInfo"
-        android:maxLength="4" />
-
-    <EditText
-        android:id="@+id/editTextNumber_day"
-        android:layout_width="50dp"
-        android:layout_height="47dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNumber_month"
-        app:layout_constraintHorizontal_bias="0.838"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0"
-        android:maxLength="2"
-        android:nextFocusRight="@+id/editTextNumber_month"
-        android:nextFocusDown="@+id/editTextNumber_month" />
+        app:layout_constraintVertical_bias="0.007" />
 
     <EditText
         android:id="@+id/editTextNumber_month"
@@ -112,33 +80,7 @@
         app:layout_constraintHorizontal_bias="0.412"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="38dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="28dp"
-        android:text="Päivä"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
-        app:layout_constraintHorizontal_bias="0.747"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_lastName"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="58dp"
-        android:layout_height="17dp"
-        android:layout_marginTop="28dp"
-        android:text="Kuukausi"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.422"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_lastName"
-        app:layout_constraintVertical_bias="0.007" />
+        app:layout_constraintVertical_bias="0.01" />
 
     <TextView
         android:id="@+id/textView5"
@@ -151,20 +93,78 @@
         app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/editText_lastName"
+        app:layout_constraintVertical_bias="0.012" />
+
+    <EditText
+        android:id="@+id/editText_lastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Sukunimi"
+        android:inputType="textPersonName"
+        android:maxLength="34"
+        android:nextFocusDown="@+id/editTextNumber_day"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_firstName"
+        app:layout_constraintVertical_bias="0.079" />
+
+    <EditText
+        android:id="@+id/editTextNumber_day"
+        android:layout_width="50dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="2"
+        android:nextFocusRight="@+id/editTextNumber_month"
+        android:nextFocusDown="@+id/editTextNumber_month"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editTextNumber_month"
+        app:layout_constraintHorizontal_bias="0.838"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.007" />
 
     <TextView
-        android:id="@+id/textView_errorMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Virheellinen syöte. Tarkista syntymäaika!"
-        android:textAlignment="center"
-        android:textColor="@color/error_red"
-        android:visibility="invisible"
+        android:id="@+id/textView2"
+        android:layout_width="58dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="28dp"
+        android:text="Kuukausi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.422"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber_month"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_lastName"
+        app:layout_constraintVertical_bias="0.012" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="38dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="28dp"
+        android:text="Päivä"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.747"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_lastName"
+        app:layout_constraintVertical_bias="0.003" />
+
+    <Button
+        android:id="@+id/button_enterInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onButtonClicked"
+        android:text="OK"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_errorMessage"
+        app:layout_constraintVertical_bias="0.20" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

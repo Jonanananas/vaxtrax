@@ -1,23 +1,24 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.VaxTrax" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.VaxTrax" parent="Theme.AppCompat">
+<!--        Use these to tweak colors if needed: -->
         <!-- Primary brand color. -->
-        <item name="android:textColorPrimary">@color/grey_100</item>
-        <item name="colorPrimary">@color/grey_700</item>
-        <item name="colorPrimaryVariant">@color/grey_700</item>
-        <item name="colorOnPrimary">@color/grey_100</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/grey_150</item>
-        <item name="colorSecondaryVariant">@color/grey_200</item>
-        <item name="colorOnSecondary">@color/grey_100</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-        <item name="android:textColor">@color/grey_100</item>
-        <item name="android:background">@color/grey_300</item>
-        <item name="android:textColorHint">@color/grey_200</item>
-<!--        <item name="android:itemBackground">@color/grey_300</item>-->
-<!--        <item name="android:popupBackground">@color/grey_300</item>-->
-
+<!--        <item name="android:textColorPrimary">@color/grey_100</item>-->
+<!--        <item name="colorPrimary">@color/grey_700</item>-->
+<!--        <item name="colorPrimaryVariant">@color/grey_700</item>-->
+<!--        <item name="colorOnPrimary">@color/grey_100</item>-->
+<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+<!--        <item name="colorSecondary">@color/grey_150</item>-->
+<!--        <item name="colorSecondaryVariant">@color/grey_200</item>-->
+<!--        <item name="colorOnSecondary">@color/grey_100</item>-->
+<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--        <item name="android:textColor">@color/grey_100</item>-->
+<!--        <item name="android:background">@color/grey_300</item>-->
+<!--        <item name="android:textColorHint">@color/grey_200</item>-->
+<!--&lt;!&ndash;        <item name="android:itemBackground">@color/grey_300</item>&ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="android:popupBackground">@color/grey_300</item>&ndash;&gt;-->
+<!--        <item name="android:backgroundTint">@color/grey_700</item>-->
     </style>
 </resources>

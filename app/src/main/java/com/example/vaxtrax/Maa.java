@@ -5,20 +5,21 @@ import java.util.List;
 
 public class Maa {
 
-    private ArrayList<Rokote> list = new ArrayList<Rokote>();
-    private String nimi;
+    private List<Rokote> maa;
+    private static final Maa ourInstance = new Maa();
 
-    public Maa (String nimi){
-        this.nimi = nimi;
+    public static Maa getInstance() {
+        return ourInstance;
     }
-    public void setRokote(Rokote rokote){
-        list.add(rokote);
+
+    private Maa() {
+        maa = new ArrayList<>();
+        maa.add(new Rokote("Argentiina", "Hepatiitti A", "Jäykkäkouristus", "Kurkkumätä", "Sikotauti", "Tuhkarokko", "Vihurirokko", "Koronavirus Covid-19"));
+        maa.add(new Rokote("Belgia",  "Jäykkäkouristus", "Kurkkumätä", "Sikotauti", "Tuhkarokko", "Vihurirokko", "Koronavirus Covid-19", " "));
+        maa.add(new Rokote("Ghana", "Hepatiitti A", "Jäykkäkouristus", "Kurkkumätä", "Sikotauti", "Tuhkarokko", "Vihurirokko", "Koronavirus Covid-19"));
     }
-    public ArrayList<Rokote> getRokotteet(){
-        return this.list;
-    }
-    public String getNimi(){
-        return this.nimi;
+
+    public List<Rokote> getRokote() {
+        return maa;
     }
 }
-

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VaxTrax">
         <activity
-            android:name=".Vaccinations"
+            android:name=".TravelVaccinations"
             android:exported="true" />
         <activity
             android:name=".Travelguide"

@@ -25,7 +25,7 @@ public class Travelguide extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("DBG", "onItemClick(" + i + ")");
-                Intent intent = new Intent(Travelguide.this, Vaccinations.class);
+                Intent intent = new Intent(Travelguide.this, TravelVaccinations.class);
                 intent.putExtra(EXTRA, i);
                 startActivity(intent);
             }

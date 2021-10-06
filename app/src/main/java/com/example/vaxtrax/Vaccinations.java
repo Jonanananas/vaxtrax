@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class Vaccinations extends AppCompatActivity {
 
@@ -13,12 +14,23 @@ public class Vaccinations extends AppCompatActivity {
         setContentView(R.layout.activity_vaccinations);
         Bundle b = getIntent().getExtras();
         int i = b.getInt(Travelguide.EXTRA, 0);
-        ListView listView = findViewById(R.id.lv_vaccines);
-        listView.setAdapter(new ArrayAdapter<Rokote>(
-                this,
-                R.layout.activity_vaccinations,
-                Maa.getInstance().getRokote())
-        );
+
+        ((TextView)findViewById(R.id.tv3))
+                .setText(Maa.getInstance().getRokote().get(i).getMaa());
+        ((TextView)findViewById(R.id.v1))
+                .setText(Maa.getInstance().getRokote().get(i).getV1());
+        ((TextView)findViewById(R.id.v2))
+                .setText(Maa.getInstance().getRokote().get(i).getV2());
+        ((TextView)findViewById(R.id.v3))
+                .setText(Maa.getInstance().getRokote().get(i).getV3());
+        ((TextView)findViewById(R.id.v4))
+                .setText(Maa.getInstance().getRokote().get(i).getV4());
+        ((TextView)findViewById(R.id.v5))
+                .setText(Maa.getInstance().getRokote().get(i).getV5());
+        ((TextView)findViewById(R.id.v6))
+                .setText(Maa.getInstance().getRokote().get(i).getV6());
+        ((TextView)findViewById(R.id.v7))
+                .setText(Maa.getInstance().getRokote().get(i).getV7());
 
     }
 }

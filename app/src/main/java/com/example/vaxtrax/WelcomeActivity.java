@@ -31,7 +31,7 @@ public class WelcomeActivity extends AppCompatActivity {
         errorText = findViewById(R.id.textView_errorMessage);
         welcomeText = findViewById(R.id.textView_welcome);
 
-        prefs = getSharedPreferences("com.example.vaxtrax", MODE_PRIVATE);
+        prefs = getSharedPreferences("com.example.vaxtrax_userInfo", MODE_PRIVATE);
         prefEditor = prefs.edit();
 
         editTextFirstName = findViewById(R.id.editText_firstName);

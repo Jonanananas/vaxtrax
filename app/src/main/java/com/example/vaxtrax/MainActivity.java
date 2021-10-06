@@ -27,12 +27,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        prefs = getSharedPreferences("com.example.vaxtrax", MODE_PRIVATE);
+        prefs = getSharedPreferences("com.example.vaxtrax_userInfo", MODE_PRIVATE);
         prefEditor = prefs.edit();
 
 //        Get the coloration mode from SharedPreferences
         darkMode = prefs.getBoolean("darkMode", true);
-        darkModeText = prefs.getString("darkModeText", "");
 
 //        Activate the coloration mode set in SharedPreferences
         if(darkMode) {
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             prefEditor.putString("darkModeText", "Aktivoi pimeämuoto");
         }
+        darkModeText = prefs.getString("darkModeText", "");
 
         String userFirstName = prefs.getString("userFirstName", "");
         String userLastName = prefs.getString("userLastName", "");

@@ -4,14 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class TravelVaccinations extends AppCompatActivity {
+public class TravelVaccinationsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_vaccinations);
         Bundle b = getIntent().getExtras();
-        int i = b.getInt(Travelguide.EXTRA, 0);
+        int i = b.getInt(TravelguideActivity.EXTRA, 0);
 
         ((TextView)findViewById(R.id.tv3))
                 .setText(Maa.getInstance().getRokote().get(i).getMaa());

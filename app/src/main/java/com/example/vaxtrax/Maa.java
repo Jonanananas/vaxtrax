@@ -17,6 +17,8 @@ public class Maa {
         maa.add(new Rokote("Argentiina", "Hepatiitti A", "Jäykkäkouristus", "Kurkkumätä", "Sikotauti", "Tuhkarokko", "Vihurirokko", "Koronavirus Covid-19"));
         maa.add(new Rokote("Belgia",  "Jäykkäkouristus", "Kurkkumätä", "Sikotauti", "Tuhkarokko", "Vihurirokko", "Koronavirus Covid-19", " "));
         maa.add(new Rokote("Ghana", "Hepatiitti A", "Jäykkäkouristus", "Kurkkumätä", "Sikotauti", "Tuhkarokko", "Vihurirokko", "Koronavirus Covid-19"));
+        maa.add(new Rokote("Intia", "Hepatiitti A", "Jäykkäkouristus", "Kurkkumätä", "Sikotauti", "Tuhkarokko", "Vihurirokko", "Koronavirus Covid-19"));
+        maa.add(new Rokote("Kolumbia", "Hepatiitti A", "Jäykkäkouristus", "Kurkkumätä", "Sikotauti", "Tuhkarokko", "Vihurirokko", "Koronavirus Covid-19"));
     }
 
     public List<Rokote> getRokote() {

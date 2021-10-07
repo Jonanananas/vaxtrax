@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VaxTrax">
         <activity
-            android:name=".TravelVaccinations"
+            android:name=".TravelVaccinationsActivity"
             android:exported="true" />
         <activity
-            android:name=".Travelguide"
+            android:name=".TravelguideActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

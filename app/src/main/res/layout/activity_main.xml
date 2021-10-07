@@ -74,4 +74,43 @@
         app:layout_constraintTop_toBottomOf="@+id/button_addVaccines"
         app:layout_constraintVertical_bias="0.163" />
 
+    <Button
+        android:id="@+id/addVax"
+        android:layout_width="349dp"
+        android:layout_height="62dp"
+        android:onClick="addVaccine"
+        android:text="@string/addVax"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.337"
+        tools:ignore="UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/button_debug_clear_sharedprefs3"
+        android:layout_width="349dp"
+        android:layout_height="62dp"
+        android:onClick="onButtonClicked"
+        android:text="button_debug_clear_sharedprefs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_userGreeting"
+        app:layout_constraintVertical_bias="0.935" />
+
+    <Button
+        android:id="@+id/button_debug_clear_sharedprefs2"
+        android:layout_width="349dp"
+        android:layout_height="62dp"
+        android:onClick="onButtonClicked"
+        android:text="button_debug_clear_sharedprefs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_userGreeting"
+        app:layout_constraintVertical_bias="0.935" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

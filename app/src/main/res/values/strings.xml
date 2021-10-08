@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">VaxTrax</string>
     <string name="main_menu_greeting_text">Hei %1$s! Olet %2$d-vuotias.</string>
-    <string name="addVax">ADD VACCINE</string>
-    <string name="vac_editText">Vaccine Name</string>
+    <string name="vac_editText">Rokotuksen Nimi</string>
+    <string name="Searchvax">Etsi Rokotuksen</string>
+    <string name="Add_button">Lisää</string>
+    <string name="date">Päivämäärä</string>
+
 </resources>

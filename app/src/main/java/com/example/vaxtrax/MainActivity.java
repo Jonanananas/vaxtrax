@@ -128,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.button_travelGuide:
                 Log.d("DEBUGGING", "button_travelGuide pressed");
-//                TODO: go to travel guide activity.
                     openActivity(TravelguideActivity.class);
                 break;
         }

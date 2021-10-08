@@ -1,18 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.VaxTrax" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.VaxTrax" parent="Theme.AppCompat">
+<!--        Use these to tweak colors if needed: -->
         <!-- Primary brand color. -->
-        <item name="android:textColorPrimary">@color/black</item>
-        <item name="colorPrimary">@color/ice</item>
-        <item name="colorPrimaryVariant">@color/grey_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-        <item name="android:textColor">@color/white</item>
+<!--        <item name="android:textColorPrimary">@color/black</item>-->
+<!--        <item name="colorPrimary">@color/ice</item>-->
+<!--        <item name="colorPrimaryVariant">@color/grey_700</item>-->
+<!--        <item name="colorOnPrimary">@color/black</item>-->
+<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+<!--        <item name="colorSecondary">@color/teal_200</item>-->
+<!--        <item name="colorSecondaryVariant">@color/teal_700</item>-->
+<!--        <item name="colorOnSecondary">@color/black</item>-->
+<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--        <item name="android:textColor">@color/white</item>-->
+<!--&lt;!&ndash;        <item name="android:itemBackground">@color/grey_300</item>&ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="android:popupBackground">@color/grey_300</item>&ndash;&gt;-->
     </style>
 </resources>

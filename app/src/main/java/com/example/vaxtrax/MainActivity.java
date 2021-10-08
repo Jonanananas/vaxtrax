@@ -2,6 +2,7 @@ package com.example.vaxtrax;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,13 +18,30 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewUserGreeting;
     private SharedPreferences.Editor prefEditor;
     private SharedPreferences prefs;
+    private boolean darkMode;
+    private String darkModeText;
+    Menu optionsMenu;
+    MenuItem darkModeSwitchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        prefs = getSharedPreferences("com.example.vaxtrax", MODE_PRIVATE);
+        prefs = getSharedPreferences("com.example.vaxtrax_userInfo", MODE_PRIVATE);
         prefEditor = prefs.edit();
+
+//        Get the coloration mode from SharedPreferences
+        darkMode = prefs.getBoolean("darkMode", true);
+
+//        Activate the coloration mode set in SharedPreferences
+        if(darkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            prefEditor.putString("darkModeText", "Aktivoi valomuoto");
+        }else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            prefEditor.putString("darkModeText", "Aktivoi pimeämuoto");
+        }
+        darkModeText = prefs.getString("darkModeText", "");
 
         String userFirstName = prefs.getString("userFirstName", "");
         String userLastName = prefs.getString("userLastName", "");
@@ -32,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 //      Open the user welcome screen if user info has not been defined.
         if (userFirstName.equals("")  && userLastName.equals("")) {
             openActivity(WelcomeActivity.class);
-        } else {
+        }else {
             setContentView(R.layout.activity_main);
 
             textViewUserGreeting = findViewById(R.id.textView_userGreeting);
@@ -41,19 +59,41 @@ public class MainActivity extends AppCompatActivity {
             );
         }
     }
-
+//    Create the options menu button
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.settings_menu, menu);
+        optionsMenu = menu;
+        darkModeSwitchButton = optionsMenu.findItem(R.id.item_changeColoration);
+        darkModeSwitchButton.setTitle(darkModeText);
         return true;
     }
-
+//    Check which options menu button is pressed and do appropriate functions based on that
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        clearSharedPreferences();
-        openActivity(WelcomeActivity.class);
-        return super.onOptionsItemSelected(item);
+        switch(item.getItemId()) {
+            case R.id.item_changeColoration:
+                if(darkMode) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    prefEditor.putString("darkModeText", "Aktivoi pimeämuoto");
+                    item.setTitle(darkModeText);
+                    darkMode = false;
+                }else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    prefEditor.putString("darkModeText", "Aktivoi valomuoto");
+                    item.setTitle(darkModeText);
+                    darkMode = true;
+                }
+                prefEditor.putBoolean("darkMode", darkMode);
+                prefEditor.commit();
+                return true;
+            case R.id.item_changeUserInfo:
+                openActivity(WelcomeActivity.class);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 //    Use this to open an activity by passing the desired activity's name
 //    (e.g. "ActivityName.class") to the function as an argument.
@@ -92,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-    public void clearSharedPreferences(){
+    public void clearSharedPreferences() {
         prefEditor.clear();
         prefEditor.commit();
     }

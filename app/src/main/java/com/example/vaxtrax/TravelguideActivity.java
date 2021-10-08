@@ -18,10 +18,10 @@ public class TravelguideActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travelguide);
 
-        //
         ListView lv = findViewById(R.id.lv_maat);
         lv.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Maa.getInstance().getRokote()));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//      Go to next activity when country on list clicked
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("DBG", "onItemClick(" + i + ")");

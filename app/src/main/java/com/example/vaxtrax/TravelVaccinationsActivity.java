@@ -12,7 +12,7 @@ public class TravelVaccinationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_travel_vaccinations);
         Bundle b = getIntent().getExtras();
         int i = b.getInt(TravelguideActivity.EXTRA, 0);
-
+//      Set list items into textviews
         ((TextView)findViewById(R.id.tv3))
                 .setText(Maa.getInstance().getRokote().get(i).getMaa());
         ((TextView)findViewById(R.id.v1))

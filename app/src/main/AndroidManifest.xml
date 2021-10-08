@@ -10,23 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VaxTrax">
         <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".WelcomeActivity"
             android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"/>
         <activity
             android:name=".TravelVaccinationsActivity"
             android:exported="true" />
         <activity
             android:name=".TravelguideActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"/>
     </application>
 
 </manifest>

@@ -30,10 +30,5 @@ public class TravelguideActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
-
     }
 }

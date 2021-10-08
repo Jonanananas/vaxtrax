@@ -1,11 +1,16 @@
 package com.example.vaxtrax;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,6 +27,8 @@ public class WelcomeActivity extends AppCompatActivity {
     private EditText editTextDay;
     private EditText editTextMonth;
     private EditText editTextYear;
+    private boolean darkMode;
+    private String darkModeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +46,19 @@ public class WelcomeActivity extends AppCompatActivity {
         editTextDay = findViewById(R.id.editTextNumber_day);
         editTextMonth = findViewById(R.id.editTextNumber_month);
         editTextYear = findViewById(R.id.editTextNumber_year);
+
+    //        Get the coloration mode from SharedPreferences
+        darkMode = prefs.getBoolean("darkMode", true);
+
+    //        Activate the coloration mode set in SharedPreferences
+        if(darkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            prefEditor.putString("darkModeText", "Aktivoi valomuoto");
+        }else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            prefEditor.putString("darkModeText", "Aktivoi pimeämuoto");
+        }
+        darkModeText = prefs.getString("darkModeText", "");
 
         String userFirstName = prefs.getString("userFirstName", "");
         String userLastName = prefs.getString("userLastName", "");
@@ -157,5 +177,38 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         }
         return age;
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings_menu_welcome_activity, menu);
+        Menu optionsMenu = menu;
+
+        MenuItem darkModeSwitchButton = optionsMenu.findItem(R.id.item_changeColoration);
+        darkModeSwitchButton.setTitle(darkModeText);
+        return true;
+    }
+    //    Check which options menu button is pressed and do appropriate functions based on that
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.item_changeColoration:
+                if(darkMode) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    prefEditor.putString("darkModeText", "Aktivoi pimeämuoto");
+                    item.setTitle(darkModeText);
+                    darkMode = false;
+                }else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    prefEditor.putString("darkModeText", "Aktivoi valomuoto");
+                    item.setTitle(darkModeText);
+                    darkMode = true;
+                }
+                prefEditor.putBoolean("darkMode", darkMode);
+                prefEditor.commit();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

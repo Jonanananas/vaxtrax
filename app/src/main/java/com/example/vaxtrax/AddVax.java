@@ -1,67 +1,56 @@
 package com.example.vaxtrax;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-import android.widget.SearchView;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+
+
 import java.io.File;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.io.FileWriter;
+import java.io.IOException;
 
 
 public class AddVax extends AppCompatActivity {
     private String VaxNamestr;
+    private static final String[] Vaxlist = new String[]{
+            "DTaP","DTaP-Booster","dT","dT-Booster","Influenza"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vax);
 
-        SearchView search = findViewById(R.id.searchVax);
-        TextView VaxName= findViewById(R.id.vaccEditText);
+        AutoCompleteTextView VaxName= findViewById(R.id.vaccEditText);
+        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,Vaxlist);
+        VaxName.setAdapter(adapter);
+        VaxNamestr=VaxName.getText().toString();
 
-        //List view add
-
-        ArrayList<String> Vaxlist = new ArrayList<>();
-        Vaxlist.add("DTaP");
-        Vaxlist.add("dT");
-        Vaxlist.add("Influenza");
-
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                if(Vaxlist.contains(query)){
-                    VaxName.setText(query);
-                    VaxNamestr=query;
-                }else{
-                    Toast.makeText(AddVax.this,"Rokotus ei löytyy meidän tiedostöstä",Toast.LENGTH_LONG).show();
-                }
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                return false;
-            }
-        });
-        
-
-
+        Context context = getApplicationContext();
+        File file = context.getExternalFilesDir(null);
+        Log.d("vaxname", VaxNamestr);
     }
 
-    public void Addtodatabase(View view){
+    public void addtoJson(String Jsonstr) throws IOException {
+        Context context = getApplicationContext();
+        File rootfile= context.getExternalFilesDir(null);
+        File jsonfile = new File(rootfile,"VaccNameDate.json");
+        FileWriter writer= new FileWriter(jsonfile);
+        writer.write(Jsonstr);
+        writer.close();
+    }
 
-        /*VaxName = findViewById(R.id.vaccEditText);
-        String VaxNamestr= VaxName.getText().toString();*/
+
+    public void Addtodatabase(View view)  {
 
         EditText vaxDay = findViewById(R.id.dayEditView);
         String VaxDaystr = vaxDay.getText().toString();
@@ -75,40 +64,38 @@ public class AddVax extends AppCompatActivity {
         String strVaxDate= VaxDaystr+ "."+ VaxMonthstr+ "."+ VaxYearstr;
 
         //add Vaccine Name and date to SharedPreferences if name and date is added
-        if ((!VaxDaystr.equals("") && !VaxMonthstr.equals("") && !VaxYearstr.equals(""))){
-            File SPfile= new File("/data/data/com.example.vaxtrax/shared_prefs/"+VaxNamestr+".xml");
-            if (SPfile.exists()){
-                Context context= getApplicationContext();
-                int duration = Toast.LENGTH_LONG;
-                Toast toast = Toast.makeText(context,VaxNamestr+" Rokotus on jo Lisäätty",duration);
-                toast.show();
+        if ((!VaxDaystr.equals("") && !VaxMonthstr.equals("")&&!VaxYearstr.equals(""))){
+            File file = this.getExternalFilesDir(null);
+            File jsonfile= new File(file,"VaccNameDate.json");
+            if (jsonfile.exists()){
+                // get json id
+                // add and entry to json
+                // read json file
+
             }else {
-                // adding to SharedPreferences
-                SharedPreferences nameDate = getSharedPreferences(VaxNamestr, MODE_PRIVATE);
-                SharedPreferences.Editor nameDateEdit = nameDate.edit();
+                JsonData jd = new JsonData(1,VaxNamestr,strVaxDate);
+                Gson gson = new Gson();
 
-                nameDateEdit.putString("Vaccine_Name",VaxNamestr);
-                nameDateEdit.putString("Date_in_string", strVaxDate);
-                nameDateEdit.apply();
-                Log.d("Date in long formate",  strVaxDate);
+                String jsonstr = gson.toJson(jd);
+                try {
+                    addtoJson(jsonstr);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-                Context context= getApplicationContext();
-                int duration = Toast.LENGTH_LONG;
-                Toast toast = Toast.makeText(context,"Rokotus lisäättyy! Tarkistaa rokotuksen",duration);
-                toast.show();
+                Toast.makeText(this,"Rokotus lisäättyy! Tarkistaa rokotuksen",Toast.LENGTH_LONG).show();
             }
 
         }else{
-            Context context= getApplicationContext();
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context,"Päivämäärä puuttuu!",duration);
-            toast.show();
+            Toast.makeText(this,"Päivämäärä tai rokotus nimi puuttuu!", Toast.LENGTH_LONG).show();
         }
 
 
 
 
     }
+
+
 
 
 

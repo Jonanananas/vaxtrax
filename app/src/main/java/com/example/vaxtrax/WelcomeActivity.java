@@ -27,8 +27,8 @@ public class WelcomeActivity extends AppCompatActivity {
     private EditText editTextDay;
     private EditText editTextMonth;
     private EditText editTextYear;
-    private boolean darkMode;
     private String darkModeText;
+    private boolean darkMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,43 +141,7 @@ public class WelcomeActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
-    public void openMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-//    Calculate user age.
-    private int calculateAge(int day, int month, int year) {
-        Calendar today = Calendar.getInstance();
-        Calendar birthday = Calendar.getInstance();
-        int age = -1;
-
-//        Check for proper date input
-        if((month > 0 && month <= 12) && day > 0 && year > 1800 ) {
-//            Initialize the birthday calendar with the user's input and the first day of the month
-//            because if the user's input day goes over the month's last day the calendar will
-//            change the month to the next month or some month after that.
-//            Subtract 1 from the month variable because January = 0;
-            birthday.set(year, month - 1, 1);
-
-//            Get the last day of the month and check if the user input day is possible within that month
-            if (birthday.getActualMaximum(Calendar.DATE) >= day) {
-//                Set the calendar day to be the user input day
-                birthday.set(Calendar.DAY_OF_MONTH, day);
-
-//                Set the user age if the given date exists
-                age = today.get(Calendar.YEAR) - birthday.get(Calendar.YEAR);
-
-//                Check if the user has had a birthday this year
-                if (today.get(Calendar.MONTH) < birthday.get(Calendar.MONTH)) {
-                    age--;
-                } else if ((today.get(Calendar.MONTH) == birthday.get(Calendar.MONTH)) &&
-                        today.get(Calendar.DAY_OF_MONTH) < birthday.get(Calendar.DAY_OF_MONTH)) {
-                    age--;
-                }
-            }
-        }
-        return age;
-    }
+//    Create a popup options menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -210,5 +174,42 @@ public class WelcomeActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    private void openMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    //    Calculate user age.
+    private int calculateAge(int day, int month, int year) {
+        Calendar today = Calendar.getInstance();
+        Calendar birthday = Calendar.getInstance();
+        int age = -1;
+
+//        Check for proper date input
+        if((month > 0 && month <= 12) && day > 0 && year > 1800 ) {
+//            Initialize the birthday calendar with the user's input and the first day of the month
+//            because if the user's input day goes over the month's last day the calendar will
+//            change the month to the next month or some month after that.
+//            Subtract 1 from the month variable because January = 0;
+            birthday.set(year, month - 1, 1);
+
+//            Get the last day of the month and check if the user input day is possible within that month
+            if (birthday.getActualMaximum(Calendar.DATE) >= day) {
+//                Set the calendar day to be the user input day
+                birthday.set(Calendar.DAY_OF_MONTH, day);
+
+//                Set the user age if the given date exists
+                age = today.get(Calendar.YEAR) - birthday.get(Calendar.YEAR);
+
+//                Check if the user has had a birthday this year
+                if (today.get(Calendar.MONTH) < birthday.get(Calendar.MONTH)) {
+                    age--;
+                } else if ((today.get(Calendar.MONTH) == birthday.get(Calendar.MONTH)) &&
+                        today.get(Calendar.DAY_OF_MONTH) < birthday.get(Calendar.DAY_OF_MONTH)) {
+                    age--;
+                }
+            }
+        }
+        return age;
     }
 }

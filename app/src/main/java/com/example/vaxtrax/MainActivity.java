@@ -18,10 +18,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewUserGreeting;
     private SharedPreferences.Editor prefEditor;
     private SharedPreferences prefs;
-    private boolean darkMode;
     private String darkModeText;
-    Menu optionsMenu;
-    MenuItem darkModeSwitchButton;
+    private Menu optionsMenu;
+    private MenuItem darkModeSwitchButton;
+    private boolean darkMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,12 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-//    Use this to open an activity by passing the desired activity's name
-//    (e.g. "ActivityName.class") to the function as an argument.
-    public void openActivity(Class activityClass) {
-        Intent intent = new Intent(this, activityClass);
-        startActivity(intent);
-    }
 //    Go to phone's home screen when back button is pressed
 //    Credit: https://stackoverflow.com/questions/3724509/going-to-home-screen-programmatically
     @Override
@@ -132,8 +126,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-    public void clearSharedPreferences() {
+    private void clearSharedPreferences() {
         prefEditor.clear();
         prefEditor.commit();
+    }
+//    Use this to open an activity by passing the desired activity's name
+//    (e.g. "ActivityName.class") to the function as an argument.
+    private void openActivity(Class activityClass) {
+        Intent intent = new Intent(this, activityClass);
+        startActivity(intent);
     }
 }

@@ -25,7 +25,7 @@
         android:layout_width="349dp"
         android:layout_height="62dp"
         android:onClick="onButtonClicked"
-        android:text="button_debug_clear_sharedprefs"
+        android:text="Poista käyttäjätiedot"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

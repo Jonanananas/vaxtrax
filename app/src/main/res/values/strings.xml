@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">VaxTrax</string>
     <string name="main_menu_greeting_text">Hei %1$s! Olet %2$d-vuotias.</string>
+    <string name="recommended_vaccines_greeting_text">%1$d vuoden ja %2$d kuukauden ikäisenä sinulla pitäisi olla ainakin seuraavat rokotteet:</string>
 </resources>

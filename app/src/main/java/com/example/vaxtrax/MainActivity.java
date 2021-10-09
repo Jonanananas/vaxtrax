@@ -124,6 +124,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("DEBUGGING", "button_travelGuide pressed");
                     openActivity(TravelguideActivity.class);
                 break;
+            case R.id.recommended_vaccines:
+                Log.d("DEBUGGING", "recommended_vaccines pressed");
+                    openActivity(RecommendVaccinesActivity.class);
+                break;
         }
     }
     private void clearSharedPreferences() {

@@ -91,6 +91,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 int userBirthMonth = -1;
                 int userBirthYear = -1;
                 int userAge = -1;
+                int userAgeMonths = -1;
 
                 if(!editTextDay.getText().toString().equals("")) {
                     if (Integer.parseInt(editTextDay.getText().toString()) > 0)
@@ -105,7 +106,8 @@ public class WelcomeActivity extends AppCompatActivity {
                         userBirthYear = Integer.parseInt(editTextYear.getText().toString());
                 }
 
-                userAge = calculateAge(userBirthDay, userBirthMonth, userBirthYear);
+                userAge = calculateAge(userBirthDay, userBirthMonth, userBirthYear)[0];
+                userAgeMonths = calculateAge(userBirthDay, userBirthMonth, userBirthYear)[1];
 
                 // Give an error, and don't let the user continue
                 // to the next screen or save the user's input data if userAge is less than 0
@@ -125,6 +127,7 @@ public class WelcomeActivity extends AppCompatActivity {
                     prefEditor.putInt("userBirthMonth", userBirthMonth);
                     prefEditor.putInt("userBirthYear", userBirthYear);
                     prefEditor.putInt("userAge", userAge);
+                    prefEditor.putInt("userAgeMonths", userAgeMonths);
 
                     prefEditor.commit();
                     openMainActivity();
@@ -179,11 +182,13 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    //    Calculate user age.
-    private int calculateAge(int day, int month, int year) {
+    //    Calculate user age in years and months.
+    private int[] calculateAge(int day, int month, int year) {
         Calendar today = Calendar.getInstance();
         Calendar birthday = Calendar.getInstance();
         int age = -1;
+        int months = -1;
+        int[] userAgeInfo = new int[2];
 
 //        Check for proper date input
         if((month > 0 && month <= 12) && day > 0 && year > 1800 ) {
@@ -201,6 +206,8 @@ public class WelcomeActivity extends AppCompatActivity {
 //                Set the user age if the given date exists
                 age = today.get(Calendar.YEAR) - birthday.get(Calendar.YEAR);
 
+                months = age * 12 + (today.get(Calendar.MONTH) - birthday.get(Calendar.MONTH));
+
 //                Check if the user has had a birthday this year
                 if (today.get(Calendar.MONTH) < birthday.get(Calendar.MONTH)) {
                     age--;
@@ -208,8 +215,15 @@ public class WelcomeActivity extends AppCompatActivity {
                         today.get(Calendar.DAY_OF_MONTH) < birthday.get(Calendar.DAY_OF_MONTH)) {
                     age--;
                 }
+
+                if(today.get(Calendar.DAY_OF_MONTH) < birthday.get(Calendar.DAY_OF_MONTH)) {
+                    months--;
+                }
+
+                userAgeInfo[0] = age;
+                userAgeInfo[1] = months;
             }
         }
-        return age;
+        return userAgeInfo;
     }
 }

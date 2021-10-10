@@ -93,8 +93,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 int userBirthDay = -1;
                 int userBirthMonth = -1;
                 int userBirthYear = -1;
-                int userAge = -1;
-                int userAgeMonths = -1;
 
                 if(!editTextDay.getText().toString().equals("")) {
                     if (Integer.parseInt(editTextDay.getText().toString()) > 0)
@@ -111,15 +109,12 @@ public class WelcomeActivity extends AppCompatActivity {
 //                Create an int array which is initialized with the user's age in years in index 0 and age in
 //                months in index 1.
                 int[] userAgeArray = calculateAge(userBirthDay, userBirthMonth, userBirthYear);
-                userAge = userAgeArray[0];
-                userAgeMonths = userAgeArray[1];
-
-                Log.d("DEBUGGING", "userAge: " + userAge);
+                int userAge = userAgeArray[0];
+                int userAgeMonths = userAgeArray[1];
 
                 // Give an error, and don't let the user continue
                 // to the next screen or save the user's input data if userAge is less than 0
                 // or the user's input is otherwise improper.
-
                 if(lastName.equals("") || firstName.equals("") && (userAge < 0 || userBirthDay
                     < 0 || userBirthMonth < 0 || userBirthYear < 0)) {
                     errorText.setText("Virheellinen syöte. Tarkista, että olet täyttänyt kaikki kentät!");

@@ -14,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+// The app's main menu screen. Open the WelcomeActivity.java automatically instead of this activity
+// if the user's name and/or age has not been saved in SharedPreferences.
+
 public class MainActivity extends AppCompatActivity {
     private TextView textViewUserGreeting;
     private SharedPreferences.Editor prefEditor;

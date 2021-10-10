@@ -17,6 +17,9 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
+// Use this activity to change the user's name and age and welcome the user if the user info in question
+// has not been saved in SharedPreferences.
+
 public class WelcomeActivity extends AppCompatActivity {
     private SharedPreferences prefs;
     private SharedPreferences.Editor prefEditor;

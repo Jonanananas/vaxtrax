@@ -69,7 +69,6 @@ public class WelcomeActivity extends AppCompatActivity {
 //      Change the texts in the activity if user data already exists in the SharedPreferences
         if (!userFirstName.equals("") && !userLastName.equals("")) {
             welcomeText.setText("Muuta käyttäjätietojasi:");
-
             editTextFirstName.setText(userFirstName);
             editTextLastName.setText(userLastName);
             editTextDay.setText(Integer.toString(prefs.getInt("userBirthDay",0)));
@@ -85,10 +84,8 @@ public class WelcomeActivity extends AppCompatActivity {
             case R.id.button_enterInfo:
                 Log.d("DEBUGGING", "button_enterInfo pressed");
 
-                String firstName = "";
-                String lastName = "";
-                firstName = editTextFirstName.getText().toString();
-                lastName = editTextLastName.getText().toString();
+                String firstName = editTextFirstName.getText().toString();
+                String lastName = editTextLastName.getText().toString();
 
                 int userBirthDay = -1;
                 int userBirthMonth = -1;

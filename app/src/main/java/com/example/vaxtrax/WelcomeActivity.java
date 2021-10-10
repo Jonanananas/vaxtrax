@@ -105,9 +105,11 @@ public class WelcomeActivity extends AppCompatActivity {
                     if (Integer.parseInt(editTextYear.getText().toString()) > 0)
                         userBirthYear = Integer.parseInt(editTextYear.getText().toString());
                 }
-
-                userAge = calculateAge(userBirthDay, userBirthMonth, userBirthYear)[0];
-                userAgeMonths = calculateAge(userBirthDay, userBirthMonth, userBirthYear)[1];
+//                Create an int array which is initialized with the user's age in years in index 0 and age in
+//                months in index 1.
+                int[] userAgeArray = calculateAge(userBirthDay, userBirthMonth, userBirthYear);
+                userAge = userAgeArray[0];
+                userAgeMonths = userAgeArray[1];
 
                 Log.d("DEBUGGING", "userAge: " + userAge);
 
@@ -184,7 +186,7 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    //    Calculate user age in years and months.
+    //    Calculate and return user age in years and months.
     private int[] calculateAge(int day, int month, int year) {
         Calendar today = Calendar.getInstance();
         Calendar birthday = Calendar.getInstance();

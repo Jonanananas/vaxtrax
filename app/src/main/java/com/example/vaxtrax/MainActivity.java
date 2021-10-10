@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
             textViewUserGreeting = findViewById(R.id.textView_userGreeting);
             textViewUserGreeting.setText(
-                    getString(R.string.main_menu_greeting_text, userFirstName, userAge)
+                    getString(R.string.main_menu_greeting_text, userFirstName)
             );
         }
     }

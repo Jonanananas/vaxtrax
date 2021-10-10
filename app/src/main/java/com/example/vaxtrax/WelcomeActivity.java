@@ -109,6 +109,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 userAge = calculateAge(userBirthDay, userBirthMonth, userBirthYear)[0];
                 userAgeMonths = calculateAge(userBirthDay, userBirthMonth, userBirthYear)[1];
 
+                Log.d("DEBUGGING", "userAge: " + userAge);
+
                 // Give an error, and don't let the user continue
                 // to the next screen or save the user's input data if userAge is less than 0
                 // or the user's input is otherwise improper.
@@ -219,11 +221,11 @@ public class WelcomeActivity extends AppCompatActivity {
                 if(today.get(Calendar.DAY_OF_MONTH) < birthday.get(Calendar.DAY_OF_MONTH)) {
                     months--;
                 }
-
-                userAgeInfo[0] = age;
-                userAgeInfo[1] = months;
             }
         }
+        userAgeInfo[0] = age;
+        userAgeInfo[1] = months;
+        
         return userAgeInfo;
     }
 }

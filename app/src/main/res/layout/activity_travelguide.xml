@@ -24,9 +24,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/lv_maat"
-        android:layout_width="346dp"
-        android:layout_height="407dp"
+        android:id="@+id/lv_countries"
+        android:layout_width="336dp"
+        android:layout_height="400dp"
         android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

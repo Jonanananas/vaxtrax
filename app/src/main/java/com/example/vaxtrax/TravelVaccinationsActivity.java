@@ -21,7 +21,7 @@ public class TravelVaccinationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_travel_vaccinations);
         Bundle b = getIntent().getExtras();
         int i = b.getInt(TravelguideActivity.EXTRA, 0);
-        ((TextView)findViewById(R.id.tv3))
+        ((TextView)findViewById(R.id.tv_country))
                 .setText(VaccinationStorage.getInstance().getVaccinationsByCountries().get(i).getCountry());
         ListView lv = findViewById(R.id.lv_vaccinationsList);
         ArrayList<VaccineInfo> vaccinations = VaccinationStorage.getInstance().getVaccinationsByCountries().get(i).getVaccinations();

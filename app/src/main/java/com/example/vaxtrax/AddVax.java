@@ -3,9 +3,8 @@ package com.example.vaxtrax;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
@@ -13,12 +12,18 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 
-
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class AddVax extends AppCompatActivity {
@@ -31,22 +36,31 @@ public class AddVax extends AppCompatActivity {
         setContentView(R.layout.activity_add_vax);
 
         AutoCompleteTextView VaxName= findViewById(R.id.vaccEditText);
+
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,Vaxlist);
         VaxName.setAdapter(adapter);
-        VaxNamestr=VaxName.getText().toString();
+        VaxName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                VaxNamestr= adapterView.getItemAtPosition(i).toString();
+            }
+        });
 
-        Context context = getApplicationContext();
-        File file = context.getExternalFilesDir(null);
-        Log.d("vaxname", VaxNamestr);
     }
 
     public void addtoJson(String Jsonstr) throws IOException {
-        Context context = getApplicationContext();
-        File rootfile= context.getExternalFilesDir(null);
-        File jsonfile = new File(rootfile,"VaccNameDate.json");
+        File jsonfile = new File(this.getFilesDir(),"VaccNameDate.json");
         FileWriter writer= new FileWriter(jsonfile);
         writer.write(Jsonstr);
         writer.close();
+    }
+
+    public ArrayList<JsonData> readJsonfile() throws FileNotFoundException {
+        File jsonfile = new File(this.getFilesDir(),"VaccNameDate.json");
+        BufferedReader reader = new BufferedReader(new FileReader(jsonfile));
+        Gson gson = new Gson();
+        Type type = new TypeToken<ArrayList<JsonData>>(){}.getType();
+        return gson.fromJson(reader,type);
     }
 
 
@@ -65,18 +79,32 @@ public class AddVax extends AppCompatActivity {
 
         //add Vaccine Name and date to SharedPreferences if name and date is added
         if ((!VaxDaystr.equals("") && !VaxMonthstr.equals("")&&!VaxYearstr.equals(""))){
-            File file = this.getExternalFilesDir(null);
-            File jsonfile= new File(file,"VaccNameDate.json");
+            File jsonfile= new File(this.getFilesDir(),"VaccNameDate.json");
             if (jsonfile.exists()){
-                // get json id
-                // add and entry to json
-                // read json file
+
+                try {
+                    ArrayList<JsonData> jsonArray = readJsonfile();
+                    jsonArray.add(new JsonData(VaxNamestr,strVaxDate));
+                    Gson gson = new Gson();
+                    String jsonstr = gson.toJson(jsonArray);
+                    try {
+                        addtoJson(jsonstr);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                Toast.makeText(this,"Rokotus lisäättyy! Tarkistaa rokotuksen",Toast.LENGTH_LONG).show();
 
             }else {
-                JsonData jd = new JsonData(1,VaxNamestr,strVaxDate);
+                ArrayList<String> vaxlist = new ArrayList<>();
+                vaxlist.add(VaxNamestr);
+                vaxlist.add(strVaxDate);
                 Gson gson = new Gson();
 
-                String jsonstr = gson.toJson(jd);
+                String jsonstr = gson.toJson(vaxlist);
                 try {
                     addtoJson(jsonstr);
                 } catch (IOException e) {

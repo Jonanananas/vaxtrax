@@ -1,19 +1,16 @@
 package com.example.vaxtrax;
 
+import java.util.ArrayList;
+
 public class JsonData {
 
-    private int key;
     private String name;
     private String date;
+    private ArrayList<String>list;
 
-    public JsonData(int key, String name, String date) {
-        this.key = key;
+    public JsonData(String name, String date) {
         this.name = name;
         this.date = date;
-    }
-
-    public int getKey() {
-        return key;
     }
 
     public String getName() {
@@ -24,8 +21,24 @@ public class JsonData {
         return date;
     }
 
+    public ArrayList<String> getList() {
+        return list;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setList(ArrayList<String> list) {
+        this.list = list;
+    }
+
     @Override
     public String toString() {
-        return key + name + date;
+        return  name + date;
     }
 }

@@ -13,6 +13,10 @@
             android:name=".RecommendVaccinesActivity"
             android:exported="true" />
         <activity
+            android:parentActivityName=".MainActivity"
+            android:name=".AddVax"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

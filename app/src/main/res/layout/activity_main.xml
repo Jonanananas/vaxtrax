@@ -6,6 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/button_debug_clear_sharedprefs"
+        android:layout_width="234dp"
+        android:layout_height="48dp"
+        android:onClick="onButtonClicked"
+        android:text="Poista käyttäjätiedot"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recommended_vaccines"
+        app:layout_constraintVertical_bias="0.709" />
+
+    <Button
+        android:id="@+id/button_checkVaccines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onButtonClicked"
+        android:text="Tarkista rokotteesi"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_addVaccines"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.831" />
+
+    <Button
+        android:id="@+id/button_travelGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onButtonClicked"
+        android:text="Rokoteopas matkailuun"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_addVaccines"
+        app:layout_constraintVertical_bias="0.109" />
+
+    <Button
+        android:id="@+id/recommended_vaccines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onButtonClicked"
+        android:text="Sinulle tarpeelliset rokotukset"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_travelGuide"
+        app:layout_constraintVertical_bias="0.144" />
+
     <TextView
         android:id="@+id/textView_userGreeting"
         android:layout_width="wrap_content"
@@ -18,33 +73,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311" />
-
-    <Button
-        android:id="@+id/button_debug_clear_sharedprefs"
-        android:layout_width="349dp"
-        android:layout_height="62dp"
-        android:onClick="onButtonClicked"
-        android:text="Poista käyttäjätiedot"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_travelGuide"
-        app:layout_constraintVertical_bias="0.701" />
-
-    <Button
-        android:id="@+id/button_checkVaccines"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onButtonClicked"
-        android:text="Tarkista rokotteesi"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_addVaccines"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.832" />
+        app:layout_constraintVertical_bias="0.656" />
 
     <Button
         android:id="@+id/button_addVaccines"
@@ -55,36 +84,9 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
-
-    <Button
-        android:id="@+id/button_travelGuide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onButtonClicked"
-        android:text="Rokoteopas matkailuun"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_addVaccines"
-        app:layout_constraintVertical_bias="0.163" />
-
-    <Button
-        android:id="@+id/recommended_vaccines"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onButtonClicked"
-        android:text="Sinulle tarpeelliset rokotukset"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.209" />
+        app:layout_constraintVertical_bias="0.408" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

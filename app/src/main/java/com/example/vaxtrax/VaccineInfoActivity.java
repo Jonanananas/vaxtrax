@@ -19,6 +19,5 @@ public class VaccineInfoActivity extends AppCompatActivity {
         TextView rokoteinfo = findViewById(R.id.tv_vaccine_info);
         rokotenimi.setText(name);
         rokoteinfo.setText(info);
-
     }
 }

@@ -37,6 +37,5 @@ public class TravelVaccinationsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

@@ -20,12 +20,8 @@ public class VaccinationsByCountry {
     public ArrayList<VaccineInfo> getVaccinations() {
         return this.vaccinations;
     }
-
     public String toString(){
         return this.country;
     }
-
-
-
 }
 

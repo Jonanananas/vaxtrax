@@ -12,7 +12,7 @@ public class VaccinationStorage {
     private static final VaccinationStorage ourInstance = new VaccinationStorage();
 //  Map for vaccines and some information about them
     private Map<String, VaccineInfo> vaccineInfoMap = new HashMap<>();
-//  Inserting information to vaccines
+//  Initializing vaccineInfoMap
     private void initVaccinationInfo(){
         vaccineInfoMap.put("Hepatiitti A", new VaccineInfo("Hepatiitti A", "Hepatiitti A, aiemmin tunnettu nimellä keltatauti, on viruksen aiheuttama tarttuva akuutti maksatulehdus. Rokote kuuluu kansallisessa rokotusohjelmassa vain riskiryhmille."));
         vaccineInfoMap.put("Jäykkäkouristus", new VaccineInfo("Jäykkäkouristus", "Tauti, jonka aiheuttaa maaperässä yleisesti esiintyvä bakteeri. Rokote kuuluu kansalliseen rokotusohjelmaan yhdistelmärokotteen osana."));
@@ -32,8 +32,11 @@ public class VaccinationStorage {
         vaccinationsByCountries = new ArrayList<>();
         vaccinationsByCountries.add(new VaccinationsByCountry("Argentiina", this.vaccineInfoMap.get("Hepatiitti A"), this.vaccineInfoMap.get("Jäykkäkouristus"), this.vaccineInfoMap.get("Kurkkumätä"), this.vaccineInfoMap.get("Sikotauti"), this.vaccineInfoMap.get("Tuhkarokko"), this.vaccineInfoMap.get("Vihurirokko"), this.vaccineInfoMap.get("Koronavirus Covid-19")));
         vaccinationsByCountries.add(new VaccinationsByCountry("Belgia", this.vaccineInfoMap.get("Jäykkäkouristus"), this.vaccineInfoMap.get("Kurkkumätä"), this.vaccineInfoMap.get("Sikotauti"), this.vaccineInfoMap.get("Tuhkarokko"), this.vaccineInfoMap.get("Vihurirokko"), this.vaccineInfoMap.get("Koronavirus Covid-19")));
+        vaccinationsByCountries.add(new VaccinationsByCountry("Brasilia", this.vaccineInfoMap.get("Hepatiitti A"), this.vaccineInfoMap.get("Jäykkäkouristus"), this.vaccineInfoMap.get("Kurkkumätä"), this.vaccineInfoMap.get("Sikotauti"), this.vaccineInfoMap.get("Tuhkarokko"), this.vaccineInfoMap.get("Vihurirokko"), this.vaccineInfoMap.get("Koronavirus Covid-19")));
+        vaccinationsByCountries.add(new VaccinationsByCountry("El Salvador", this.vaccineInfoMap.get("Hepatiitti A"), this.vaccineInfoMap.get("Jäykkäkouristus"), this.vaccineInfoMap.get("Kurkkumätä"), this.vaccineInfoMap.get("Sikotauti"), this.vaccineInfoMap.get("Tuhkarokko"), this.vaccineInfoMap.get("Vihurirokko"), this.vaccineInfoMap.get("Koronavirus Covid-19")));
         vaccinationsByCountries.add(new VaccinationsByCountry("Ghana", this.vaccineInfoMap.get("Hepatiitti A"), this.vaccineInfoMap.get("Jäykkäkouristus"), this.vaccineInfoMap.get("Kurkkumätä"), this.vaccineInfoMap.get("Sikotauti"), this.vaccineInfoMap.get("Tuhkarokko"), this.vaccineInfoMap.get("Vihurirokko"), this.vaccineInfoMap.get("Koronavirus Covid-19")));
         vaccinationsByCountries.add(new VaccinationsByCountry("Intia", this.vaccineInfoMap.get("Hepatiitti A"), this.vaccineInfoMap.get("Jäykkäkouristus"), this.vaccineInfoMap.get("Kurkkumätä"), this.vaccineInfoMap.get("Sikotauti"), this.vaccineInfoMap.get("Tuhkarokko"), this.vaccineInfoMap.get("Vihurirokko"), this.vaccineInfoMap.get("Koronavirus Covid-19")));
+        vaccinationsByCountries.add(new VaccinationsByCountry("Japani", this.vaccineInfoMap.get("Jäykkäkouristus"), this.vaccineInfoMap.get("Kurkkumätä"), this.vaccineInfoMap.get("Sikotauti"), this.vaccineInfoMap.get("Tuhkarokko"), this.vaccineInfoMap.get("Vihurirokko"), this.vaccineInfoMap.get("Koronavirus Covid-19")));
         vaccinationsByCountries.add(new VaccinationsByCountry("Kolumbia", this.vaccineInfoMap.get("Hepatiitti A"), this.vaccineInfoMap.get("Jäykkäkouristus"), this.vaccineInfoMap.get("Kurkkumätä"), this.vaccineInfoMap.get("Sikotauti"), this.vaccineInfoMap.get("Tuhkarokko"), this.vaccineInfoMap.get("Vihurirokko"), this.vaccineInfoMap.get("Koronavirus Covid-19")));
 
     }

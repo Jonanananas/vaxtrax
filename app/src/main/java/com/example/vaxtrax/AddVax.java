@@ -78,7 +78,7 @@ public class AddVax extends AppCompatActivity {
 
         String strVaxDate= VaxDaystr+ "."+ VaxMonthstr+ "."+ VaxYearstr;
 
-        if (VaxNamestr == null ||(!VaxDaystr.equals("") && !VaxMonthstr.equals("")&&!VaxYearstr.equals(""))){
+        if (VaxNamestr != null ||(!VaxDaystr.equals("") && !VaxMonthstr.equals("")&&!VaxYearstr.equals(""))){
 
             // If Json file is created get json data
             // add data to file
@@ -101,9 +101,8 @@ public class AddVax extends AppCompatActivity {
                 Toast.makeText(this,"Rokotus lisäättyy! Tarkistaa rokotuksen",Toast.LENGTH_LONG).show();
             //crate json file and add data to file
             }else {
-                ArrayList<String> vaxlist = new ArrayList<>();
-                vaxlist.add(VaxNamestr);
-                vaxlist.add(strVaxDate);
+                ArrayList<JsonData> vaxlist = new ArrayList<>();
+                vaxlist.add(new JsonData(VaxNamestr,strVaxDate));
                 Gson gson = new Gson();
 
                 String jsonstr = gson.toJson(vaxlist);

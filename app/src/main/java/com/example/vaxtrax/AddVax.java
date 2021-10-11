@@ -47,14 +47,14 @@ public class AddVax extends AppCompatActivity {
         });
 
     }
-
+    //creates json file and adds json string to file.
     public void addtoJson(String Jsonstr) throws IOException {
         File jsonfile = new File(this.getFilesDir(),"VaccNameDate.json");
         FileWriter writer= new FileWriter(jsonfile);
         writer.write(Jsonstr);
         writer.close();
     }
-
+    //return Json
     public ArrayList<JsonData> readJsonfile() throws FileNotFoundException {
         File jsonfile = new File(this.getFilesDir(),"VaccNameDate.json");
         BufferedReader reader = new BufferedReader(new FileReader(jsonfile));
@@ -77,8 +77,8 @@ public class AddVax extends AppCompatActivity {
 
         String strVaxDate= VaxDaystr+ "."+ VaxMonthstr+ "."+ VaxYearstr;
 
-        //add Vaccine Name and date to SharedPreferences if name and date is added
-        if ((!VaxDaystr.equals("") && !VaxMonthstr.equals("")&&!VaxYearstr.equals(""))){
+        //if Vaccine name and date added then add data to Jsonfile
+        if (VaxNamestr == null ||(!VaxDaystr.equals("") && !VaxMonthstr.equals("")&&!VaxYearstr.equals(""))){
             File jsonfile= new File(this.getFilesDir(),"VaccNameDate.json");
             if (jsonfile.exists()){
 

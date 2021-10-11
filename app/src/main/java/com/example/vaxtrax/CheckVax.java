@@ -18,11 +18,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class CheckVax extends AppCompatActivity {
-    private String EXTRA="Index of array";
+
     private ArrayList<JsonData> readJsonfile() throws FileNotFoundException {
         File jsonfile = new File(this.getFilesDir(),"VaccNameDate.json");
         BufferedReader reader = new BufferedReader(new FileReader(jsonfile));
@@ -38,33 +37,17 @@ public class CheckVax extends AppCompatActivity {
 
         ListView listView= findViewById(R.id.vaccineListView);
 
-        try {
-            ArrayList<JsonData> readData= readJsonfile();
-            ArrayList<String> strReadData= new ArrayList<>();
-            for (int i = 0; i < readData.size(); i++) {
-                strReadData.add(readData.get(i).getName());
-            }
-            ArrayAdapter<String> adapter= new ArrayAdapter <String>(this,android.R.layout.simple_list_item_1,strReadData);
-            listView.setAdapter(adapter);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Intent VaccineInfoACtivity = new Intent(CheckVax.this,VaccineDetailsActivity.class);
-                    VaccineInfoACtivity.putExtra(EXTRA, i);
-                    startActivity(VaccineInfoACtivity);
-
-                }
-            });
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        ArrayAdapter<JsonData> adapter= new ArrayAdapter <JsonData>(this,android.R.layout.simple_list_item_1,VaxDataSingleton.getInstance().getJsonData());
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent VaccineInfoACtivity = new Intent(CheckVax.this, VaccineDetailsActivity.class);
+                VaccineInfoACtivity.putExtra("index", i);
+                startActivity(VaccineInfoACtivity);}
 
 
-
-
-
-
-
+        });
     }
 
 

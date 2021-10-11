@@ -42,6 +42,6 @@ public class JsonData {
 
     @Override
     public String toString() {
-        return  name + date;
+        return  name ;
     }
 }

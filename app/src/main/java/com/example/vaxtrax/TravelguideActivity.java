@@ -1,7 +1,6 @@
 package com.example.vaxtrax;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,8 +17,8 @@ public class TravelguideActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travelguide);
 
-        ListView lv = findViewById(R.id.lv_maat);
-        lv.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Maa.getInstance().getRokote()));
+        ListView lv = findViewById(R.id.lv_countries);
+        lv.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, VaccinationStorage.getInstance().getVaccinationsByCountries()));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //      Go to next activity when country on list clicked
             @Override

@@ -1,5 +1,5 @@
 package com.example.vaxtrax;
-
+//Class for setting information to vaccine
 public class VaccineInfo {
 
     private String vaccine;

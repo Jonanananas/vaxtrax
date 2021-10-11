@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+//Storage for vaccinedata
 public class VaccinationStorage {
 
     private List<VaccinationsByCountry> vaccinationsByCountries;

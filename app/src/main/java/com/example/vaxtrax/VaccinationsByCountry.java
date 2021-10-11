@@ -3,7 +3,7 @@ package com.example.vaxtrax;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+//Class for arraylist of vaccinations by country
 public class VaccinationsByCountry {
 
     private String country;

@@ -28,7 +28,17 @@ public class JsonData {
         return list;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setList(ArrayList<String> list) {
+        this.list = list;
+    }
 
     @Override
     public String toString() {

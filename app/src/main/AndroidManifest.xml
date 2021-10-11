@@ -10,12 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VaxTrax">
         <activity
+            android:name=".CheckVax"
+            android:exported="true" />
+        <activity
             android:name=".RecommendVaccinesActivity"
             android:exported="true" />
         <activity
-            android:parentActivityName=".MainActivity"
             android:name=".AddVax"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

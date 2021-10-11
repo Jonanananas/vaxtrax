@@ -35,6 +35,7 @@ public class AddVax extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vax);
 
+        // Autocomplete textview from given options in vaxlist
         AutoCompleteTextView VaxName= findViewById(R.id.vaccEditText);
 
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,Vaxlist);
@@ -47,14 +48,14 @@ public class AddVax extends AppCompatActivity {
         });
 
     }
-    //creates json file and adds json string to file.
+    //function creates json file and adds json string to file.
     public void addtoJson(String Jsonstr) throws IOException {
         File jsonfile = new File(this.getFilesDir(),"VaccNameDate.json");
         FileWriter writer= new FileWriter(jsonfile);
         writer.write(Jsonstr);
         writer.close();
     }
-    //return Json
+    //Function return data in Json file in JsonData object
     public ArrayList<JsonData> readJsonfile() throws FileNotFoundException {
         File jsonfile = new File(this.getFilesDir(),"VaccNameDate.json");
         BufferedReader reader = new BufferedReader(new FileReader(jsonfile));
@@ -63,7 +64,7 @@ public class AddVax extends AppCompatActivity {
         return gson.fromJson(reader,type);
     }
 
-
+    //if Vaccine name and date added then function adds data to Json file
     public void Addtodatabase(View view)  {
 
         EditText vaxDay = findViewById(R.id.dayEditView);
@@ -77,11 +78,12 @@ public class AddVax extends AppCompatActivity {
 
         String strVaxDate= VaxDaystr+ "."+ VaxMonthstr+ "."+ VaxYearstr;
 
-        //if Vaccine name and date added then add data to Jsonfile
         if (VaxNamestr == null ||(!VaxDaystr.equals("") && !VaxMonthstr.equals("")&&!VaxYearstr.equals(""))){
+
+            // If Json file is created get json data
+            // add data to file
             File jsonfile= new File(this.getFilesDir(),"VaccNameDate.json");
             if (jsonfile.exists()){
-
                 try {
                     ArrayList<JsonData> jsonArray = readJsonfile();
                     jsonArray.add(new JsonData(VaxNamestr,strVaxDate));
@@ -97,7 +99,7 @@ public class AddVax extends AppCompatActivity {
                 }
 
                 Toast.makeText(this,"Rokotus lisäättyy! Tarkistaa rokotuksen",Toast.LENGTH_LONG).show();
-
+            //crate json file and add data to file
             }else {
                 ArrayList<String> vaxlist = new ArrayList<>();
                 vaxlist.add(VaxNamestr);

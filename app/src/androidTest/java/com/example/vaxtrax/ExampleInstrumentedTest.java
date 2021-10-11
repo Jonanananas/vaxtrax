@@ -1,7 +1,11 @@
 package com.example.vaxtrax;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -23,4 +27,5 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("com.example.vaxtrax", appContext.getPackageName());
     }
+
 }

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
+//Activity with list of countries user can choose from to see which vaccines are recommended when traveling to that country
 public class TravelguideActivity extends AppCompatActivity {
     public static final String EXTRA = "fi.johanna.vaxtrax.EXTRA";
 

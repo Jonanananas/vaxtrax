@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-
+// Information about the vaccine the user clicked on
+//Vaccine information source:
+//https://www.rokote.fi/matkailijat/rokotteilla-ehkaistavat-taudit/
 public class VaccineInfoActivity extends AppCompatActivity {
 
     @Override

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 
 public class CheckVax extends AppCompatActivity {
-
+    private ArrayList <String> strJsonlist;
     private ArrayList<JsonData> readJsonfile() throws FileNotFoundException {
         File jsonfile = new File(this.getFilesDir(),"VaccNameDate.json");
         BufferedReader reader = new BufferedReader(new FileReader(jsonfile));
@@ -36,18 +36,28 @@ public class CheckVax extends AppCompatActivity {
         setContentView(R.layout.activity_check_vax);
 
         ListView listView= findViewById(R.id.vaccineListView);
+        try {
+            ArrayList<JsonData> readJsonfile= readJsonfile();
 
-        ArrayAdapter<JsonData> adapter= new ArrayAdapter <JsonData>(this,android.R.layout.simple_list_item_1,VaxDataSingleton.getInstance().getJsonData());
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent VaccineInfoACtivity = new Intent(CheckVax.this, VaccineDetailsActivity.class);
-                VaccineInfoACtivity.putExtra("index", i);
-                startActivity(VaccineInfoACtivity);}
+            ArrayAdapter<JsonData> adapter= new ArrayAdapter <JsonData>(this,android.R.layout.simple_list_item_1,readJsonfile);
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent VaccineInfoACtivity = new Intent(CheckVax.this, VaccineDetailsActivity.class);
+                    VaccineInfoACtivity.putExtra("index", i);
+                    VaccineInfoACtivity.putExtra("name",readJsonfile.get(i).getName());
+                    VaccineInfoACtivity.putExtra("date",readJsonfile.get(i).getDate());
+                    startActivity(VaccineInfoACtivity);}
 
 
-        });
+            });
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+
     }
 
 

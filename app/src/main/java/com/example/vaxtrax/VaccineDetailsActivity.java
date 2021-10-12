@@ -16,9 +16,10 @@ public class VaccineDetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int index = intent.getIntExtra("index", 0);
-
-        ((TextView) findViewById(R.id.VaccineNameInfo)).setText(VaxDataSingleton.getInstance().getName(index));
-        ((TextView) findViewById(R.id.RecivedDate)).setText(VaxDataSingleton.getInstance().getDate(index));
+        String name = intent.getStringExtra("name");
+        String date = intent.getStringExtra("date");
+        ((TextView) findViewById(R.id.VaccineNameInfo)).setText(name);
+        ((TextView) findViewById(R.id.RecivedDate)).setText(date);
 
 
     }

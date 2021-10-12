@@ -1,5 +1,7 @@
 package com.example.vaxtrax;
 
+import android.annotation.SuppressLint;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -18,7 +20,7 @@ public class VaxDataSingleton {
         return ourInstance;
     }
     private VaxDataSingleton(){
-        File jsonfile = new File("/data/data/com.example.vaxtrax/files","VaccNameDate.json");
+        @SuppressLint("SdCardPath") File jsonfile = new File("/data/data/com.example.vaxtrax/files","VaccNameDate.json");
         try {
             BufferedReader reader = new BufferedReader(new FileReader(jsonfile));
             Gson gson = new Gson();

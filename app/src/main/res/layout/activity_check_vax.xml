@@ -24,7 +24,7 @@
         android:layout_marginTop="44dp"
         android:text="Lisäätty rokotukset"
         android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/vaccineListView"
+        app:layout_constraintStart_toStartOf="@+id/vaccineListView"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

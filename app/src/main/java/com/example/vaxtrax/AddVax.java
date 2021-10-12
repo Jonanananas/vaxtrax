@@ -111,7 +111,7 @@ public class AddVax extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                Toast.makeText(this,"Rokotus lisäättyy! Tarkistaa rokotuksen",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Rokotus lisätty! Tarkista rokotuksesi",Toast.LENGTH_LONG).show();
             //crate json file and add data to file
             }else {
                 ArrayList<JsonData> vaxlist = new ArrayList<>();
@@ -125,11 +125,11 @@ public class AddVax extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                Toast.makeText(this,"Rokotus lisäättyy! Tarkistaa rokotuksen",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Rokotus lisätty! Tarkista rokotuksesi",Toast.LENGTH_LONG).show();
             }
 
         }else{
-            Toast.makeText(this,"Päivämäärä tai rokotus nimi puuttuu!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Päivämäärä tai rokotuksen nimi puuttuu!", Toast.LENGTH_LONG).show();
         }
 
 

@@ -45,6 +45,11 @@ public class VaccinationStorage {
         vaccinationsByCountries.add(new VaccinationsByCountry("Kolumbia", this.vaccineInfoMap.get("Hepatiitti A"), this.vaccineInfoMap.get("Jäykkäkouristus"), this.vaccineInfoMap.get("Kurkkumätä"), this.vaccineInfoMap.get("Sikotauti"), this.vaccineInfoMap.get("Tuhkarokko"), this.vaccineInfoMap.get("Vihurirokko"), this.vaccineInfoMap.get("Koronavirus Covid-19")));
 
     }
+
+    /**
+     * Get vaccinations by countries
+     * @return vaccinationsByCountries ArrayList of countries and vaccinations and information about the vaccines
+     */
     public List<VaccinationsByCountry> getVaccinationsByCountries(){
         return vaccinationsByCountries;
     }

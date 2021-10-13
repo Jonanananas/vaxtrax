@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.os.Bundle;
@@ -32,7 +31,7 @@ import java.util.ArrayList;
  * @author Naima Nowrin
  * @version 1.0 13/10/2021*/
 
-public class AddVax extends AppCompatActivity {
+public class AddVaxActivity extends AppCompatActivity {
     private String VaxNamestr;
     private static final String[] Vaxlist = new String[]{
             "DTaP","DTaP-Booster","dT","dT-Booster","Influenza"};
@@ -64,7 +63,7 @@ public class AddVax extends AppCompatActivity {
         Checkvex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddVax.this,CheckVax.class);
+                Intent intent = new Intent(AddVaxActivity.this, CheckVaxActivity.class);
                 startActivity(intent);
             }
         });

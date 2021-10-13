@@ -15,8 +15,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.nio.file.NoSuchFileException;
 
 /**
  * The app's main menu screen activity. The activity has buttons which open the main screens of the
@@ -144,11 +142,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.button_checkVaccines:
                 Log.d("DEBUGGING", "button_checkVaccines pressed");
-                openActivity(CheckVax.class);
+                openActivity(CheckVaxActivity.class);
                 break;
             case R.id.button_addVaccines:
                 Log.d("DEBUGGING", "button_addVaccines pressed");
-                openActivity(AddVax.class);
+                openActivity(AddVaxActivity.class);
                 break;
             case R.id.button_travelGuide:
                 Log.d("DEBUGGING", "button_travelGuide pressed");

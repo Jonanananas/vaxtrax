@@ -13,13 +13,13 @@
             android:name=".VaccineDetailsActivity"
             android:exported="true" />
         <activity
-            android:name=".CheckVax"
+            android:name=".CheckVaxActivity"
             android:exported="true" />
         <activity
             android:name=".RecommendVaccinesActivity"
             android:exported="true" />
         <activity
-            android:name=".AddVax"
+            android:name=".AddVaxActivity"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
         <activity

@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * @author Naima Nowrin
  * @version 1.0 13/10/2021*/
 
-public class CheckVax extends AppCompatActivity {
+public class CheckVaxActivity extends AppCompatActivity {
     private ArrayList <String> strJsonlist;
 
     /** Function returns added data from Jsonfile
@@ -51,7 +51,7 @@ public class CheckVax extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Intent VaccineInfoACtivity = new Intent(CheckVax.this, VaccineDetailsActivity.class);
+                    Intent VaccineInfoACtivity = new Intent(CheckVaxActivity.this, VaccineDetailsActivity.class);
                     VaccineInfoACtivity.putExtra("name",readJsonfile.get(i).getName());
                     VaccineInfoACtivity.putExtra("date",readJsonfile.get(i).getDate());
                     startActivity(VaccineInfoACtivity);}

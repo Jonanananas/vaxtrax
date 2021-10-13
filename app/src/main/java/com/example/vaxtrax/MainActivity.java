@@ -14,6 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.NoSuchFileException;
+
 /**
  * The app's main menu screen activity. The activity has buttons which open the main screens of the
  * app's central features. Open the WelcomeActivity.java automatically instead of this activity if
@@ -136,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button_debug_clear_sharedprefs:
                 clearSharedPreferences();
                 openActivity(WelcomeActivity.class);
+                deleteJsonFile();
                 break;
             case R.id.button_checkVaccines:
                 Log.d("DEBUGGING", "button_checkVaccines pressed");
@@ -164,5 +169,12 @@ public class MainActivity extends AppCompatActivity {
     private void openActivity(Class activityClass) {
         Intent intent = new Intent(this, activityClass);
         startActivity(intent);
+    }
+
+    private void deleteJsonFile(){
+        File Jsonfile = new File(this.getFilesDir(),"VaccNameDate.json");
+        if (Jsonfile.exists()){
+            Jsonfile.delete();
+        }
     }
 }

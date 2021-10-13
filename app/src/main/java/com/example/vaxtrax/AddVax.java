@@ -11,6 +11,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.os.Bundle;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -25,7 +26,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class AddVax extends AppCompatActivity {
@@ -38,28 +38,26 @@ public class AddVax extends AppCompatActivity {
         setContentView(R.layout.activity_add_vax);
 
         // Autocomplete textview from given options in vaxlist
-        AutoCompleteTextView VaxName= findViewById(R.id.vaccEditText);
+        Spinner VaxName= findViewById(R.id.vaxSpinner);
         Button Checkvex = findViewById(R.id.checkVax);
 
-        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,Vaxlist);
+        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,Vaxlist);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         VaxName.setAdapter(adapter);
-        VaxName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                VaxNamestr= adapterView.getItemAtPosition(i).toString();
 
+        VaxName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                VaxNamestr = Vaxlist[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                VaxNamestr= null;
             }
         });
 
-        Checkvex.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AddVax.this,CheckVax.class);
-                startActivity(intent);
-            }
-        });
-
-
+        
     }
     //function creates json file and adds json string to file.
     private void addtoJson(String Jsonstr) throws IOException {
@@ -92,7 +90,6 @@ public class AddVax extends AppCompatActivity {
         String strVaxDate= " "+VaxDaystr+ "."+ VaxMonthstr+ "."+ VaxYearstr;
 
         if (VaxNamestr != null && (!VaxDaystr.equals("") && !VaxMonthstr.equals("")&&!VaxYearstr.equals(""))){
-
             // If Json file is created get json data
             // add data to file
             File jsonfile= new File(this.getFilesDir(),"VaccNameDate.json");

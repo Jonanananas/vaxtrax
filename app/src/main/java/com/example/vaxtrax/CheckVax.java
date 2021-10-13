@@ -39,18 +39,15 @@ public class CheckVax extends AppCompatActivity {
         try {
             ArrayList<JsonData> readJsonfile= readJsonfile();
 
-            ArrayAdapter<JsonData> adapter= new ArrayAdapter <JsonData>(this,android.R.layout.simple_list_item_1,readJsonfile);
+            ArrayAdapter<JsonData> adapter= new ArrayAdapter <>(this,android.R.layout.simple_list_item_1,readJsonfile);
             listView.setAdapter(adapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent VaccineInfoACtivity = new Intent(CheckVax.this, VaccineDetailsActivity.class);
-                    VaccineInfoACtivity.putExtra("index", i);
                     VaccineInfoACtivity.putExtra("name",readJsonfile.get(i).getName());
                     VaccineInfoACtivity.putExtra("date",readJsonfile.get(i).getDate());
                     startActivity(VaccineInfoACtivity);}
-
-
             });
         } catch (FileNotFoundException e) {
             e.printStackTrace();

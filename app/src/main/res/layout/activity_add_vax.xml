@@ -15,10 +15,9 @@
         android:text="@string/Add_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.594" />
+        app:layout_constraintVertical_bias="0.713" />
 
     <TextView
         android:id="@+id/Date"
@@ -28,10 +27,10 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.018"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.263" />
+        app:layout_constraintVertical_bias="0.346" />
 
     <EditText
         android:id="@+id/monthEditView"
@@ -43,10 +42,10 @@
         android:maxLength="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.207"
+        app:layout_constraintHorizontal_bias="0.262"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.357" />
+        app:layout_constraintVertical_bias="0.427" />
 
     <EditText
         android:id="@+id/yearEditView"
@@ -58,10 +57,10 @@
         android:maxLength="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.357" />
+        app:layout_constraintVertical_bias="0.427" />
 
     <EditText
         android:id="@+id/dayEditView"
@@ -73,23 +72,10 @@
         android:maxLength="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.357" />
-
-    <AutoCompleteTextView
-        android:id="@+id/vaccEditText"
-        android:layout_width="364dp"
-        android:layout_height="83dp"
-        android:completionThreshold="0"
-        android:hint="Valitse rokotus"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.112" />
+        app:layout_constraintVertical_bias="0.427" />
 
     <Button
         android:id="@+id/checkVax"
@@ -98,9 +84,33 @@
         android:text="TARKISTA ROKOTUKSESI"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.764" />
+        app:layout_constraintVertical_bias="0.847" />
+
+    <Spinner
+        android:id="@+id/vaxSpinner"
+        android:layout_width="372dp"
+        android:layout_height="77dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.214" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valitse rokotuksen valikoimasta:"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.095" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

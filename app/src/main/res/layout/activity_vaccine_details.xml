@@ -38,7 +38,7 @@
         android:layout_height="56dp"
         android:layout_marginTop="61dp"
         android:layout_marginEnd="254dp"
-        android:text="seuraava rokotusaikaa:"
+        android:text="Seuraava rokotusaika:"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,9 +49,9 @@
 
     <TextView
         android:id="@+id/Vaccreciveddate"
-        android:layout_width="210dp"
-        android:layout_height="61dp"
-        android:text="Rokotteen antopäivä:"
+        android:layout_width="221dp"
+        android:layout_height="63dp"
+        android:text="Rokotteen saantipäivä:"
         android:textSize="21sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -10,7 +10,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lisätyt rokotukset"
+        android:text="Rokotteesi:"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/vaccineListView"
         app:layout_constraintEnd_toEndOf="parent"

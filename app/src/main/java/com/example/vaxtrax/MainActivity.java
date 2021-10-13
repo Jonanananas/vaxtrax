@@ -14,9 +14,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-// The app's main menu screen. Open the WelcomeActivity.java automatically instead of this activity
-// if the user's name and/or age has not been saved in SharedPreferences.
-
+/**
+ * The app's main menu screen activity. The activity has buttons which open the main screens of the
+ * app's central features. Open the WelcomeActivity.java automatically instead of this activity if
+ * the user's name and/or age has not been saved in SharedPreferences. If the user presses their
+ * device's "Back" button when this activity is open the user is directed to the device's home screen.
+ * @author Jonathan Methuen
+ * @version 1.0 13/10/2021
+ */
 public class MainActivity extends AppCompatActivity {
     private TextView textViewUserGreeting;
     private SharedPreferences.Editor prefEditor;
@@ -62,7 +67,12 @@ public class MainActivity extends AppCompatActivity {
             );
         }
     }
-//    Create the options menu button
+    /**
+     * Create an options menu button with a menu item to switch between the app's dark and light modes
+     * and a menu item which brings the user to the screen where the user can change their user info.
+     * @param Menu menu an object of the Menu class.
+     * @return boolean returns true to display the options menu.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -72,7 +82,12 @@ public class MainActivity extends AppCompatActivity {
         darkModeSwitchButton.setTitle(darkModeText);
         return true;
     }
-//    Check which options menu button is pressed and do appropriate functions based on that
+    /**
+     * Check which options menu button is pressed and do appropriate functions based on that.
+     * @param @NonNull MenuItem the selected menu item
+     * @return boolean returns true if the menu item was successfully handled. Otherwise return the superclass
+     * implementation of onOptionsItemSelected() which default implementation returns false.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
@@ -98,8 +113,10 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-//    Go to phone's home screen when back button is pressed
-//    Credit: https://stackoverflow.com/questions/3724509/going-to-home-screen-programmatically
+    /**
+     * Go to the device's home screen when the back button is pressed.
+     * Credit: https://stackoverflow.com/questions/3724509/going-to-home-screen-programmatically
+     */
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(Intent.ACTION_MAIN);
@@ -107,6 +124,11 @@ public class MainActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+    /**
+     * Open different activities based on which button was pressed or clear the user info data by pressing
+     * a button which id is "button_debug_clear_sharedprefs".
+     * @param View v
+     */
 //    Link this function to buttons and add here what the buttons do.
     public void onButtonClicked(View v) {
 //        Change and save user data to SharedPreferences when enter button is pressed

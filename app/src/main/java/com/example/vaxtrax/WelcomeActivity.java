@@ -17,9 +17,12 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
-// Use this activity to change the user's name and age and welcome the user if the user info in question
-// has not been saved in SharedPreferences.
-
+/**
+ * Use this activity to change the user's name and age and welcome the user if the user's info in question
+ * has not been saved in SharedPreferences.
+ * @author Jonathan Methuen
+ * @version 1.0 13/10/2021
+ */
 public class WelcomeActivity extends AppCompatActivity {
     private SharedPreferences prefs;
     private SharedPreferences.Editor prefEditor;
@@ -78,8 +81,12 @@ public class WelcomeActivity extends AppCompatActivity {
             welcomeText.setText("Tervetuloa käyttämään VaxTrax-sovellusta! \n Mikä on nimesi ja syntymäaikasi?");
         }
     }
+    /**
+     * Change and save user data to SharedPreferences when a button with the id of "button_enterInfo"
+     * is pressed.
+     * @param View v the selected button.
+     */
     public void onButtonClicked(View v) {
-//        Change and save user data to SharedPreferences when enter button is pressed
         switch(v.getId()) {
             case R.id.button_enterInfo:
                 Log.d("DEBUGGING", "button_enterInfo pressed");
@@ -134,8 +141,10 @@ public class WelcomeActivity extends AppCompatActivity {
                 break;
         }
     }
-//    Go to phone's home screen when back button is pressed.
-//    Credit: https://stackoverflow.com/questions/3724509/going-to-home-screen-programmatically
+    /**
+     * Go to the device's home screen when the back button is pressed.
+     * Credit: https://stackoverflow.com/questions/3724509/going-to-home-screen-programmatically
+     */
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(Intent.ACTION_MAIN);
@@ -143,7 +152,11 @@ public class WelcomeActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
-//    Create a popup options menu
+    /**
+     * Create an options menu button with a menu item to switch between the app's dark and light modes.
+     * @param Menu menu an object of the Menu class.
+     * @return boolean returns true to display the options menu.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -154,7 +167,12 @@ public class WelcomeActivity extends AppCompatActivity {
         darkModeSwitchButton.setTitle(darkModeText);
         return true;
     }
-    //    Check which options menu button is pressed and do appropriate functions based on that
+    /**
+     * Check which options menu button is pressed and do appropriate functions based on that.
+     * @param @NonNull MenuItem the selected menu item
+     * @return boolean returns true if the menu item was successfully handled. Otherwise return the superclass
+     * implementation of onOptionsItemSelected() which default implementation returns false.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {

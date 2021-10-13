@@ -1,27 +1,24 @@
 package com.example.vaxtrax;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-// An activity which displays recommended vaccines which the user should have got at their age.
-// Vaccines information source:
-// https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/tietoa-rokotuksista/kansallinen-rokotusohjelma/rokotusohjelma-lapsille-ja-aikuisille#rokotusohjelma
-
+/**
+ * An activity which displays the recommended vaccines which the user should have at their age.
+ * Vaccines information source:
+ * https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/tietoa-rokotuksista/kansallinen-rokotusohjelma/rokotusohjelma-lapsille-ja-aikuisille#rokotusohjelma
+ * @author Jonathan Methuen
+ * @version 1.0 13/10/2021
+ */
 public class RecommendVaccinesActivity extends AppCompatActivity {
 
     @Override
@@ -61,6 +58,10 @@ public class RecommendVaccinesActivity extends AppCompatActivity {
         ListView lv = findViewById(R.id.listView_recommendedVaccines);
         lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, recommendedVaccines));
     }
+    /**
+     * Go back to the main menu screen
+     * @param View v the selected button.
+     */
     public void onButtonClicked(View v) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

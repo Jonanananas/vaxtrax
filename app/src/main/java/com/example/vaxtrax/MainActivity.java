@@ -117,12 +117,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.button_checkVaccines:
                 Log.d("DEBUGGING", "button_checkVaccines pressed");
-//                TODO: go to vaccine list activity.
+                openActivity(CheckVax.class);
                 break;
             case R.id.button_addVaccines:
                 Log.d("DEBUGGING", "button_addVaccines pressed");
-                Intent intent = new Intent(this,AddVax.class);
-                startActivity(intent);
+                openActivity(AddVax.class);
                 break;
             case R.id.button_travelGuide:
                 Log.d("DEBUGGING", "button_travelGuide pressed");

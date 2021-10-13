@@ -1,10 +1,13 @@
 package com.example.vaxtrax;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class JsonData {
-
+    @SerializedName("name")
     private String name;
+    @SerializedName("date")
     private String date;
     private ArrayList<String>list;
 
@@ -39,6 +42,6 @@ public class JsonData {
 
     @Override
     public String toString() {
-        return  name + date;
+        return  name ;
     }
 }

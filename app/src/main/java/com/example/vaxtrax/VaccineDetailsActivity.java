@@ -6,6 +6,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**Activity shows information form CheckVax Listview
+ * @author Naima Nowrin
+ * @version 1.0 13/10/2021*/
 public class VaccineDetailsActivity extends AppCompatActivity {
 
     @Override
@@ -15,7 +18,6 @@ public class VaccineDetailsActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        int index = intent.getIntExtra("index", 0);
         String name = intent.getStringExtra("name");
         String date = intent.getStringExtra("date");
         ((TextView) findViewById(R.id.VaccineNameInfo)).setText(name);

@@ -26,7 +26,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-
+/**
+ * Activity creates Json file and adds Users given Vaccine to file
+ * From this activity user can check Added vaccines
+ * @author Naima Nowrin
+ * @version 1.0 13/10/2021*/
 
 public class AddVax extends AppCompatActivity {
     private String VaxNamestr;
@@ -67,14 +71,17 @@ public class AddVax extends AppCompatActivity {
 
         
     }
-    //function creates json file and adds json string to file.
+    /** function creates json file adds json string to file
+     * @param Jsonstr Json data in string format */
     private void addtoJson(String Jsonstr) throws IOException {
         File jsonfile = new File(this.getFilesDir(),"VaccNameDate.json");
         FileWriter writer= new FileWriter(jsonfile);
         writer.write(Jsonstr);
         writer.close();
     }
-    //Function return data in Json file in JsonData object
+    /** Function returns added data from Jsonfile
+     * @return data from Json file in JsonData object format
+     * JsonData is Class that creates objects out of given data*/
     private ArrayList<JsonData> readJsonfile() throws FileNotFoundException {
         File jsonfile = new File(this.getFilesDir(),"VaccNameDate.json");
         BufferedReader reader = new BufferedReader(new FileReader(jsonfile));
@@ -83,7 +90,11 @@ public class AddVax extends AppCompatActivity {
         return gson.fromJson(reader,type);
     }
 
-    //if Vaccine name and date added then function adds data to Json file
+    /** Function checks if Vaccine name and date given
+     * Creates JsonData object of Vaccine name and Vaccine date given
+     * adds JsonData object to Array
+     * Converts Array to Json
+     * Adds Json to JsonFile*/
     public void Addtodatabase(View view)  {
 
         EditText vaxDay = findViewById(R.id.dayEditView);
@@ -98,8 +109,6 @@ public class AddVax extends AppCompatActivity {
         String strVaxDate= " "+VaxDaystr+ "."+ VaxMonthstr+ "."+ VaxYearstr;
 
         if (VaxNamestr != null && (!VaxDaystr.equals("") && !VaxMonthstr.equals("")&&!VaxYearstr.equals(""))){
-            // If Json file is created get json data
-            // add data to file
             File jsonfile= new File(this.getFilesDir(),"VaccNameDate.json");
             if (jsonfile.exists()){
                 try {
@@ -117,7 +126,6 @@ public class AddVax extends AppCompatActivity {
                 }
 
                 Toast.makeText(this,"Rokotus lisätty! Tarkista rokotuksesi",Toast.LENGTH_LONG).show();
-            //crate json file and add data to file
             }else {
                 ArrayList<JsonData> vaxlist = new ArrayList<>();
                 vaxlist.add(new JsonData(VaxNamestr,strVaxDate));

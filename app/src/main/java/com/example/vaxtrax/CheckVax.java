@@ -19,9 +19,16 @@ import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+/**Avtivity shows list of added vaccine
+ * @author Naima Nowrin
+ * @version 1.0 13/10/2021*/
 
 public class CheckVax extends AppCompatActivity {
     private ArrayList <String> strJsonlist;
+
+    /** Function returns added data from Jsonfile
+     * @return data from Json file in JsonData object format
+     * JsonData is Class that creates objects out of given data*/
     private ArrayList<JsonData> readJsonfile() throws FileNotFoundException {
         File jsonfile = new File(this.getFilesDir(),"VaccNameDate.json");
         BufferedReader reader = new BufferedReader(new FileReader(jsonfile));

@@ -3,7 +3,10 @@ package com.example.vaxtrax;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
-
+/** Class is created to make objects out of given data
+ * @author Naima Nowrin
+ * @version 1.0 13/10/2021
+ * @param String name, String date takes vaccine name and date as parameter*/
 public class JsonData {
     @SerializedName("name")
     private String name;

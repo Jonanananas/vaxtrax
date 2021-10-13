@@ -12,8 +12,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-//Activity with list of vaccines recommended for each country clicked in the previous activity.
-// The vaccine names can be clicked to get information about them.
+/**
+ * Activity with list of vaccines recommended for each country clicked in the previous activity.
+ * The vaccine names can be clicked to get information about them.
+ * @author Johanna Lavikainen
+ * @version 1.0 13/10/2021
+ */
+
 
 public class TravelVaccinationsActivity extends AppCompatActivity {
 

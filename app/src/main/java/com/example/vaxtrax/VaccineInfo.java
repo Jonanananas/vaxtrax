@@ -1,5 +1,11 @@
 package com.example.vaxtrax;
-//Class for setting information to vaccine
+/**
+ * Class for setting information to vaccine.
+ * @author Johanna Lavikainen
+ * @version 1.0 13/10/2021
+ * @param String vaccine name of vaccine
+ * @param String info information about vaccine
+ */
 public class VaccineInfo {
 
     private String vaccine;

@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-//Storage for vaccinedata
+/**
+ * Storage for vaccinedata
+ * @author Johanna Lavikainen
+ * @version 1.0 13/10/2021
+ */
+
 public class VaccinationStorage {
 
     private List<VaccinationsByCountry> vaccinationsByCountries;

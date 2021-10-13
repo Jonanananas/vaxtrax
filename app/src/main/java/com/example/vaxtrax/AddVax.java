@@ -57,6 +57,14 @@ public class AddVax extends AppCompatActivity {
             }
         });
 
+        Checkvex.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddVax.this,CheckVax.class);
+                startActivity(intent);
+            }
+        });
+
         
     }
     //function creates json file and adds json string to file.
